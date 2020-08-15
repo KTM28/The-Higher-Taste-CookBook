@@ -1,0 +1,20 @@
+  {% extends 'base.html' %} {% block content %}
+
+  {% for recipe in recipes %}
+  
+  {{recipe.name}}
+  {{recipe.prep_time}}
+  {{recipe.cook_time}}
+  {{recipe.serves}}
+  {{recipe.ingredients}}
+  {{recipe.instructions}}
+  {{recipe.category}}
+  {{recipe.author}}
+  {{recipe.img}}
+  {{recipe.added_date}}
+  {{recipe.views}}
+  {{recipe.likes}}
+  
+  {% endfor %}
+
+  {% endblock %}

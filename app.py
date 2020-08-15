@@ -11,9 +11,20 @@ app.secret_key = os.environ.get("SECRET_KEY")
 
 mongo = PyMongo(app)
 
+#DB = mongo.db
+
 @app.route('/')
 def home_template():
     return render_template('home.html')
+
+@app.route('/get_recipes')
+def get_recipes():
+    """
+    retrieve the recipes from the database and render below into the template
+    
+    """
+    return render_template('recipes.html', recipes=mongo.db.recipes.find())
+
 
 if __name__ == "__main__":
     app.run(host=os.environ.get("IP"),
