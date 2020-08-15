@@ -23,7 +23,7 @@ def get_recipes():
     retrieve the recipes from the database and render below into the template
     
     """
-    return render_template('recipes.html', recipes=mongo.db.recipes.find())
+    return render_template('recipes.html', recipe=mongo.db.recipes.find())
 
 
 if __name__ == "__main__":

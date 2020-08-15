@@ -1,20 +1,24 @@
   {% extends 'base.html' %} {% block content %}
 
-  {% for recipe in recipes %}
-  
-  {{recipe.name}}
-  {{recipe.prep_time}}
-  {{recipe.cook_time}}
-  {{recipe.serves}}
-  {{recipe.ingredients}}
-  {{recipe.instructions}}
-  {{recipe.category}}
-  {{recipe.author}}
-  {{recipe.img}}
-  {{recipe.added_date}}
-  {{recipe.views}}
-  {{recipe.likes}}
-  
-  {% endfor %}
+
+  <h3>Recipes</h3>
+
+
+  <ul class="collapsible">
+    {% for recipes in recipe %}
+
+    <li>
+      <div class="collapsible-header"><i class="material-icons">expand_more</i>
+        <strong>{{recipes.name}}</strong> - {{recipes.cuisine}}
+      </div>
+      <div class="collapsible-body"><span>{{recipes.instruction}}</span>
+        <div class="card-image">
+          <img src="{{recipes.img}}" width="200" height="200">
+        </div>
+      </div>
+    </li>
+
+    {% endfor %}
+  </ul>
 
   {% endblock %}
