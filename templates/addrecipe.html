@@ -1,6 +1,91 @@
 {% extends 'base.html' %} {% block content %}
 
-<h3>Add Recipe</h3>
+<h3><i class="prefix material-icons">menu_book</i>Add Recipe</h3>
+
+<div class="row">
+    <form class="col s12" method="POST">
+        <div class="input-field col s12 m6 l3">
+            <i class="prefix fas fa-utensils"></i>
+            <select id="cuisine" name="cuisine">
+                <option value="" disabled selected>Choose your option</option>
+                <option value="1">Option 1</option>
+            </select>
+            <label for="cuisine">Select Cuisine</label>
+        </div>
+        <div class="input-field col s12 m6 l3">
+            <i class="prefix fas fa-cheese"></i>
+            <select id="recipe_type" name="recipe_type">
+                <option value="" disabled selected>Choose your option</option>
+                <option value="1">Option 1</option>
+                <option value="2">Option 2</option>
+                <option value="3">Option 3</option>
+            </select>
+            <label for="recipe_type">Recipe Type</label>
+        </div>
+        <div class="input-field col s12 m6 l3">
+            <i class="prefix fas fa-hourglass-half"></i>
+            <select id="cook_time" name="cook_time">
+                <option value="" disabled selected>Choose your option</option>
+                <option value="1">Option 1</option>
+                <option value="2">Option 2</option>
+                <option value="3">Option 3</option>
+            </select>
+            <label for="cook_time">Cooking Time</label>
+        </div>
+        <div class="input-field col s12 m6 l3">
+            <i class="prefix fas fa-users"></i>
+            <select id="serves" name="serves">
+                <option value="" disabled selected>Choose your option</option>
+                <option value="1">Option 1</option>
+                <option value="2">Option 2</option>
+                <option value="3">Option 3</option>
+            </select>
+            <label for="serves">Serving</label>
+        </div>
+        <div class="row">
+            <div class="input-field col s12">
+                <i class="prefix material-icons">local_dining</i>
+                <input id="name" name="name" type="text" class="validate">
+                <label for="name">Recipe Name</label>
+            </div>
+        </div>
+        <div class="row">
+            <div class="input-field col s12">
+                <i class="prefix fas fa-edit"></i>
+                <input id="description" name="description" type="text" class="validate">
+                <label for="description">Recipe Description</label>
+            </div>
+        </div>
+        <div class="row">
+            <div class="input-field col s12">
+                <i class="prefix fas fa-mortar-pestle"></i>
+                <input id="ingredients" name="ingredients" type="text" class="validate">
+                <label for="ingredients">Recipe Ingredients</label>
+            </div>
+        </div>
+        <div class="row">
+            <div class="input-field col s12">
+                <i class="prefix fas fa-clipboard-list"></i>
+                <input id="instruction" name="instruction" type="text" class="validate">
+                <label for="instruction">Recipe Instruction</label>
+            </div>
+        </div>
+        <div class="row">
+            <div class="input-field col s12 m6 l3">
+                <i class="prefix far fa-calendar-alt"></i>
+                <input id="added_date" name="added_date" type="text" class="datepicker">
+                <label for="added_date">Date of Creation</label>
+            </div>
+        </div>
+
+        <div class="row">
+            <button class="btn waves-effect waves-light" type="submit" name="action">
+                Add Recipe
+                <i class="fas fa-folder-plus"></i>
+            </button>
+        </div>
+    </form>
+</div>
 
 
 {% endblock %}
