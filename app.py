@@ -17,6 +17,12 @@ mongo = PyMongo(app)
 def home_template():
     return render_template('home.html')
 
+@app.errorhandler(404)
+def error_handler(e):
+    return render_template('404.html')
+
+
+
 @app.route('/get_recipes')
 def get_recipes():
     """
