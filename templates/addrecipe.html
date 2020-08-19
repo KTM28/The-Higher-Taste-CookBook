@@ -3,12 +3,14 @@
 <h3><i class="prefix material-icons">menu_book</i>Add Recipe</h3>
 
 <div class="row">
-    <form class="col s12" method="POST">
+    <form class="col s12" action="{{ url_for('insert_recipe') }}" method="POST">
         <div class="input-field col s12 m6 l3">
             <i class="prefix fas fa-utensils"></i>
             <select id="cuisine" name="cuisine">
                 <option value="" disabled selected>Choose your option</option>
-                <option value="1">Option 1</option>
+                {% for cuisine in cuisines %}
+                <option value="{{cuisine.cuisine}}">{{cuisine.cuisine}}</option>
+                {% endfor %}
             </select>
             <label for="cuisine">Select Cuisine</label>
         </div>
@@ -16,9 +18,9 @@
             <i class="prefix fas fa-cheese"></i>
             <select id="recipe_type" name="recipe_type">
                 <option value="" disabled selected>Choose your option</option>
-                <option value="1">Option 1</option>
-                <option value="2">Option 2</option>
-                <option value="3">Option 3</option>
+                {% for type in recipetype %}
+                <option value="{{type.recipe_type}}">{{type.recipe_type}}</option>
+                {% endfor %}
             </select>
             <label for="recipe_type">Recipe Type</label>
         </div>
@@ -26,9 +28,9 @@
             <i class="prefix fas fa-hourglass-half"></i>
             <select id="cook_time" name="cook_time">
                 <option value="" disabled selected>Choose your option</option>
-                <option value="1">Option 1</option>
-                <option value="2">Option 2</option>
-                <option value="3">Option 3</option>
+                {% for time in cooktime %}
+                <option value="{{time.cooking_time}}">{{time.cooking_time}}</option>
+                {% endfor %}
             </select>
             <label for="cook_time">Cooking Time</label>
         </div>
@@ -36,9 +38,9 @@
             <i class="prefix fas fa-users"></i>
             <select id="serves" name="serves">
                 <option value="" disabled selected>Choose your option</option>
-                <option value="1">Option 1</option>
-                <option value="2">Option 2</option>
-                <option value="3">Option 3</option>
+                {% for serving in servings %}
+                <option value="{{serving.serves}}">{{serving.serves}}</option>
+                {% endfor %}
             </select>
             <label for="serves">Serving</label>
         </div>
@@ -68,6 +70,13 @@
                 <i class="prefix fas fa-clipboard-list"></i>
                 <input id="instruction" name="instruction" type="text" class="validate">
                 <label for="instruction">Recipe Instruction</label>
+            </div>
+        </div>
+        <div class="row">
+            <div class="input-field col s12">
+                <i class="prefix fas fa-camera"></i>
+                <input id="recipe_img" name="recipe_img" type="text" class="validate">
+                <label for="recipe_img">Add Image URL</label>
             </div>
         </div>
         <div class="row">
