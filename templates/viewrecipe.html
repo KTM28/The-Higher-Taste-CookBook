@@ -1,3 +1,52 @@
 {% extends 'base.html' %} {% block content %}
-<h5>recipe page</h5>
+<div class="row clearfix">
+    <img class="responsive-img circle" src="{{recipe.recipe_img}}" width="400" height="200">
+    <h5><i class="prefix material-icons">local_dining</i>{{recipe.name}}</h5>
+</div>
+<div class="row">
+    <div class="col s12">
+        <ul>
+            <li class="col s3">
+                <i class="prefix fas fa-utensils"></i>
+                <span>Cuisine</span>
+                {{recipe.cuisine}}
+            </li>
+            <li class="col s3">
+                <i class="prefix fas fa-th-list"></i>
+                <span>Type</span>
+                {{recipe.recipe_type}}
+            </li>
+            <li class="col s3">
+                <i class="prefix fas fa-users"></i>
+                <span>Servs</span>
+                {{recipe.serves}}
+            </li>
+            <li class="col s3">
+                <i class="prefix fas fa-hourglass-half"></i>
+                <span>Cooking Time</span>
+                {{recipe.cook_time}}
+            </li>
+        </ul>
+    </div>
+</div>
+<hr>
+<div class="row">
+    <h4>Description</h4>
+    <p>{{recipe.description}}</p>
+</div>
+<hr>
+<div class="row">
+    <h4>Ingredients</h4>
+    <p>{{recipe.ingredients}}</p>
+</div>
+<hr>
+<div class="row">
+    <h4>Instruction</h4>
+    <p>{{recipe.instruction}}</p>
+</div>
+<hr>
+<div class="row">
+    <h4>Date of Creation</h4>
+    <p>{{recipe.added_date}}</p>
+</div>
 {% endblock %}

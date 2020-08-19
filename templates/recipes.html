@@ -8,10 +8,14 @@
     {% for recipes in recipe %}
 
     <li>
-      <div class="collapsible-header"><i class="material-icons">expand_more</i>
+      <div class="collapsible-header">
+        <div class="col s3">
+          <i class="material-icons">expand_more</i>
+          <a href="{{ url_for('view_recipe', recipe_id=recipes._id) }}" class="waves-effect waves-light btn-small"><i class="material-icons left">visibility</i>View</a>
+        </div>
         <strong>{{recipes.name}}</strong> - {{recipes.cuisine}}
       </div>
-      <div class="collapsible-body"><span>{{recipes.description}}</span>
+      <div class="collapsible-body bg-orange"><span class="font-white">{{recipes.description}}</span>
       </div>
     </li>
 

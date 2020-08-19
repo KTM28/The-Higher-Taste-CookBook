@@ -17,9 +17,9 @@ mongo = PyMongo(app)
 def home_template():
     return render_template('home.html')
 
-@app.errorhandler(404)
+"""@app.errorhandler(404)
 def error_handler(e):
-    return render_template('404.html')
+    return render_template('404.html')"""
 
 
 
@@ -41,6 +41,7 @@ def add_recipe():
                             .sort("recipe_type"),
                             servings=mongo.db.servings.find())
 
+
 @app.route('/insert_recipe', methods=['POST'])
 def insert_recipe():
     recipe = mongo.db.recipes
@@ -59,8 +60,12 @@ def insert_recipe():
     return redirect(url_for('get_recipes'))
     
 
+@app.route('/view_recipe/<recipe_id>')
+def view_recipe(recipe_id):
+        the_recipe = mongo.db.recipes.find_one({"_id": ObjectId(recipe_id)})
+        return render_template('viewrecipe.html', recipe=the_recipe)
 
-
+        
 
 
 
