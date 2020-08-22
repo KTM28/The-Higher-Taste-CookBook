@@ -44,7 +44,7 @@ def insert_recipe():
         'name': request.form.get('name'),
         'cuisine': request.form.get('cuisine'),
         'recipe_type': request.form.get('recipe_type'),
-        'cook_time': request.form.get('cook_time'),
+        'cooking_time': request.form.get('cooking_time'),
         'serves': request.form.get('serves'),
         'description': request.form.get('description'),
         'ingredients': request.form.get('ingredients'),
@@ -76,6 +76,29 @@ def edit_recipe(recipe_id):
                             recipetype=all_recipetype,
                             servings=all_servings,
                             cooktime=all_cooktimes)
+
+
+@app.route('/update_recipe/<recipe_id>', methods=["POST"])
+def update_recipe(recipe_id):
+    recipe = mongo.db.recipes
+    recipe.update({'_id': ObjectId(recipe_id)},
+                { 
+                'name': request.form.get('name'),
+                'cuisine': request.form.get('cuisine'),
+                'recipe_type': request.form.get('recipe_type'),
+                'cooking_time': request.form.get('cooking_time'),
+                'serves': request.form.get('serves'),
+                'description': request.form.get('description'),
+                'ingredients': request.form.get('ingredients'),
+                'instruction': request.form.get('instruction'),
+                'recipe_img': request.form.get('recipe_img'),
+                'added_date': request.form.get('added_date')
+                })
+    flash('Your Recipe has been Updated Sucessfully')
+    return redirect(url_for('get_recipes'))
+
+
+
 
 
 

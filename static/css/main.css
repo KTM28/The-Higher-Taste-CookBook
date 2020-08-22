@@ -21,7 +21,10 @@ body {
     background-color: #DB400B;
 }
 
-.btn-small:hover, .btn-small:active, .btn-small:focus, .btn-small:active:focus {
+.btn-small:hover,
+.btn-small:active,
+.btn-small:focus,
+.btn-small:active:focus {
     background-color: #60AF42;
     color: white;
     box-shadow: none;
@@ -29,7 +32,7 @@ body {
 
 
 .color-org {
-   color: #DB400B;
+    color: #DB400B;
 }
 
 hr {
@@ -37,3 +40,4 @@ hr {
     height: 5px;
     border: none;
 }
+

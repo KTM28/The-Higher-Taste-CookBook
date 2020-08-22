@@ -1,5 +1,5 @@
 {% extends 'base.html' %} {% block content %}
-
+<main class="recipe-form">
 <h3><i class="prefix material-icons">menu_book</i>Add Recipe</h3>
 
 <div class="row">
@@ -26,7 +26,7 @@
         </div>
         <div class="input-field col s12 m6 l3">
             <i class="prefix fas fa-hourglass-half"></i>
-            <select id="cook_time" name="cook_time">
+            <select id="cooking_time" name="cooking_time">
                 <option value="" disabled selected>Choose your option</option>
                 {% for time in cooktime %}
                 <option value="{{time.cooking_time}}">{{time.cooking_time}}</option>
@@ -96,5 +96,5 @@
     </form>
 </div>
 
-
+</main>
 {% endblock %}
