@@ -1,16 +1,39 @@
 body {
-    background-color: beige;
+    margin: 0;
 }
 
-.clearfix {
+.room {
     margin-top: 10px;
 }
 
 .bg-orange {
-    background-color: orangered;
+    background-color: #DB400B;
 }
 
 .font-white {
     color: #ffffff;
 }
 
+.btn-small {
+    display: block;
+    margin-left: auto;
+    margin-right: 0;
+    background-color: #DB400B;
+}
+
+.btn-small:hover, .btn-small:active, .btn-small:focus, .btn-small:active:focus {
+    background-color: #60AF42;
+    color: white;
+    box-shadow: none;
+}
+
+
+.color-org {
+   color: #DB400B;
+}
+
+hr {
+    background-color: #F7E800;
+    height: 5px;
+    border: none;
+}
