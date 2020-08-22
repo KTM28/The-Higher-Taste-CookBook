@@ -1,6 +1,7 @@
 import os
+import math
 from flask import Flask, render_template, redirect, request, session, flash, url_for
-from flask_pymongo import PyMongo
+from flask_pymongo import PyMongo, pymongo
 from bson.objectid import ObjectId
 
 app = Flask(__name__)
@@ -11,25 +12,19 @@ app.secret_key = os.environ.get("SECRET_KEY")
 
 mongo = PyMongo(app)
 
-#DB = mongo.db
 
 @app.route('/')
 def home_template():
     return render_template('home.html')
 
-"""@app.errorhandler(404)
-def error_handler(e):
-    return render_template('404.html')"""
-
 
 
 @app.route('/get_recipes')
 def get_recipes():
-    """
-    retrieve the recipes from the database and render below into the template
-    
-    """
-    return render_template('recipes.html', recipe=mongo.db.recipes.find())
+    """retrieve the recipes from the database and render below into the template"""
+    return render_template('recipes.html', recipe = mongo.db.recipes.find())
+
+
 
 @app.route('/add_recipe')
 def add_recipe():
@@ -62,11 +57,25 @@ def insert_recipe():
 
 @app.route('/view_recipe/<recipe_id>')
 def view_recipe(recipe_id):
+    try:
         the_recipe = mongo.db.recipes.find_one({"_id": ObjectId(recipe_id)})
         return render_template('viewrecipe.html', recipe=the_recipe)
+    except Exception:
+        return render_template("404.html")
 
         
-
+@app.route('/edit_recipe/<recipe_id>')
+def edit_recipe(recipe_id):
+    the_recipe = mongo.db.recipes.find_one({"_id": ObjectId(recipe_id)})
+    all_cuisines = mongo.db.cuisines.find().sort("cuisine")
+    all_recipetype = mongo.db.recipetype.find().sort("recipe_type")
+    all_servings = mongo.db.servings.find()
+    all_cooktimes = mongo.db.cooktime.find()
+    return render_template('editrecipe.html', recipe=the_recipe,
+                            cuisines=all_cuisines,
+                            recipetype=all_recipetype,
+                            servings=all_servings,
+                            cooktime=all_cooktimes)
 
 
 

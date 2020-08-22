@@ -11,15 +11,27 @@
       <div class="collapsible-header">
         <div class="col s3">
           <i class="material-icons">expand_more</i>
-          <a href="{{ url_for('view_recipe', recipe_id=recipes._id) }}" class="waves-effect waves-light btn-small"><i class="material-icons left">visibility</i>View</a>
         </div>
         <strong>{{recipes.name}}</strong> - {{recipes.cuisine}}
+        <a href="{{ url_for('view_recipe', recipe_id=recipes._id) }}" class="waves-effect waves-light btn-small"><i
+            class="material-icons left">visibility</i>View</a>
       </div>
       <div class="collapsible-body bg-orange"><span class="font-white">{{recipes.description}}</span>
       </div>
     </li>
 
     {% endfor %}
+  </ul>
+
+  <ul class="pagination">
+    <li class="disabled"><a href="#!"><i class="material-icons">chevron_left</i></a></li>
+    {% for page_number in pages %} {% if page_number == current_page %}
+    <li class="active"><a href="#!">{{ page_number }}</a></li>
+    {% else %}
+    <li class="waves-effect"><a
+        href="{{ url_for('recipes.get_recipes', current_page=page_number)}}">{{ page_number }}</a></li>
+    {% endif %} {% endfor %}
+    <li class="waves-effect"><a href="#!"><i class="material-icons">chevron_right</i></a></li>
   </ul>
 
   {% endblock %}

@@ -1,6 +1,11 @@
 {% extends 'base.html' %} {% block content %}
-<div class="row clearfix">
+<div class="row room">
+    {% if recipe.recipe_img %}
     <img class="responsive-img circle" src="{{recipe.recipe_img}}" width="400" height="200">
+    {% else %}
+    <img class="responsive-img circle" src="{{ url_for('static', filename='images/recipePlaceHolder.jpg') }}"
+        width="400" height="200">
+    {% endif %}
     <h5><i class="prefix material-icons">local_dining</i>{{recipe.name}}</h5>
 </div>
 <div class="row">
@@ -8,23 +13,23 @@
         <ul>
             <li class="col s3">
                 <i class="prefix fas fa-utensils"></i>
-                <span>Cuisine</span>
+                <span class="color-org"><strong>Cuisine</strong></span>
                 {{recipe.cuisine}}
             </li>
             <li class="col s3">
                 <i class="prefix fas fa-th-list"></i>
-                <span>Type</span>
+                <span class="color-org"><strong>Type</strong></span>
                 {{recipe.recipe_type}}
             </li>
             <li class="col s3">
                 <i class="prefix fas fa-users"></i>
-                <span>Servs</span>
+                <span class="color-org"><strong>Serves</strong></span>
                 {{recipe.serves}}
             </li>
             <li class="col s3">
                 <i class="prefix fas fa-hourglass-half"></i>
-                <span>Cooking Time</span>
-                {{recipe.cook_time}}
+                <span class="color-org"><strong>Cooking Time</strong></span>
+                {{recipe.cooking_time}}
             </li>
         </ul>
     </div>
@@ -49,4 +54,12 @@
     <h4>Date of Creation</h4>
     <p>{{recipe.added_date}}</p>
 </div>
+<hr>
+<div class="row">
+    <div class="col s3">
+        <a href="{{ url_for('edit_recipe', recipe_id=recipe._id) }}" class="waves-effect waves-light btn-small"><i
+                class="material-icons left fas fa-user-edit"></i>Edit</a>
+    </div>
+</div>
+
 {% endblock %}
