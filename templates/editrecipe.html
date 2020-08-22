@@ -95,14 +95,14 @@
             <div class="row">
                 <div class="input-field col s12">
                     <i class="prefix fas fa-camera"></i>
-                    <textarea id="recipe_img" name="recipe_img" type="text" class="validate materialize-textarea" required>{{recipe.recipe_img}}</textarea>
+                    <input id="recipe_img" name="recipe_img" type="text" class="validate materialize-textarea" value="{{recipe.recipe_img}}">
                     <label for="recipe_img">Add Image URL</label>
                 </div>
             </div>
             <div class="row">
                 <div class="input-field col s12 m6 l3">
                     <i class="prefix far fa-calendar-alt"></i>
-                    <textarea id="added_date" name="added_date" type="text" class="datepicker validate materialize-textarea">{{recipe.added_date}}</textarea>
+                    <input id="added_date" name="added_date" type="text" class="datepicker" value="{{recipe.added_date}}">
                     <label for="added_date">Date of Creation</label>
                 </div>
             </div>

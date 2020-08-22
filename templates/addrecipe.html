@@ -6,7 +6,7 @@
     <form class="col s12" action="{{ url_for('insert_recipe') }}" method="POST">
         <div class="input-field col s12 m6 l3">
             <i class="prefix fas fa-utensils"></i>
-            <select id="cuisine" name="cuisine">
+            <select id="cuisine" name="cuisine" required>
                 <option value="" disabled selected>Choose your option</option>
                 {% for cuisine in cuisines %}
                 <option value="{{cuisine.cuisine}}">{{cuisine.cuisine}}</option>
@@ -16,7 +16,7 @@
         </div>
         <div class="input-field col s12 m6 l3">
             <i class="prefix fas fa-th-list"></i>
-            <select id="recipe_type" name="recipe_type">
+            <select id="recipe_type" name="recipe_type" required>
                 <option value="" disabled selected>Choose your option</option>
                 {% for type in recipetype %}
                 <option value="{{type.recipe_type}}">{{type.recipe_type}}</option>
@@ -26,17 +26,17 @@
         </div>
         <div class="input-field col s12 m6 l3">
             <i class="prefix fas fa-hourglass-half"></i>
-            <select id="cooking_time" name="cooking_time">
+            <select id="cooking_time" name="cooking_time" required>
                 <option value="" disabled selected>Choose your option</option>
                 {% for time in cooktime %}
                 <option value="{{time.cooking_time}}">{{time.cooking_time}}</option>
                 {% endfor %}
             </select>
-            <label for="cook_time">Cooking Time</label>
+            <label for="cooking_time">Cooking Time</label>
         </div>
         <div class="input-field col s12 m6 l3">
             <i class="prefix fas fa-users"></i>
-            <select id="serves" name="serves">
+            <select id="serves" name="serves" required>
                 <option value="" disabled selected>Choose your option</option>
                 {% for serving in servings %}
                 <option value="{{serving.serves}}">{{serving.serves}}</option>
@@ -47,42 +47,42 @@
         <div class="row">
             <div class="input-field col s12">
                 <i class="prefix material-icons">local_dining</i>
-                <input id="name" name="name" type="text" class="validate">
+                <input id="name" name="name" type="text" class="validate" required>
                 <label for="name">Recipe Name</label>
             </div>
         </div>
         <div class="row">
             <div class="input-field col s12">
                 <i class="prefix fas fa-edit"></i>
-                <input id="description" name="description" type="text" class="validate">
+                <textarea id="description" name="description" type="text" class="validate materialize-textarea" required></textarea>
                 <label for="description">Recipe Description</label>
             </div>
         </div>
         <div class="row">
             <div class="input-field col s12">
                 <i class="prefix fas fa-mortar-pestle"></i>
-                <input id="ingredients" name="ingredients" type="text" class="validate">
+                <textarea id="ingredients" name="ingredients" type="text" class="validate materialize-textarea" required></textarea>
                 <label for="ingredients">Recipe Ingredients</label>
             </div>
         </div>
         <div class="row">
             <div class="input-field col s12">
                 <i class="prefix fas fa-clipboard-list"></i>
-                <input id="instruction" name="instruction" type="text" class="validate">
+                <textarea id="instruction" name="instruction" type="text" class="validate materialize-textarea" required></textarea>
                 <label for="instruction">Recipe Instruction</label>
             </div>
         </div>
         <div class="row">
             <div class="input-field col s12">
                 <i class="prefix fas fa-camera"></i>
-                <input id="recipe_img" name="recipe_img" type="text" class="validate">
+                <input id="recipe_img" name="recipe_img" type="text" class="validate" required>
                 <label for="recipe_img">Add Image URL</label>
             </div>
         </div>
         <div class="row">
             <div class="input-field col s12 m6 l3">
                 <i class="prefix far fa-calendar-alt"></i>
-                <input id="added_date" name="added_date" type="text" class="datepicker">
+                <input id="added_date" name="added_date" type="text" class="datepicker" required>
                 <label for="added_date">Date of Creation</label>
             </div>
         </div>
