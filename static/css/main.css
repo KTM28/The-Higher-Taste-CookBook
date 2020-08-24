@@ -1,5 +1,7 @@
 body {
     margin: 0;
+    height: 100%;
+    padding: 0;
 }
 
 .room {
@@ -39,5 +41,17 @@ hr {
     background-color: #F7E800;
     height: 5px;
     border: none;
+}
+
+.home-page {
+    position: relative;
+    background: url('../images/recipePlaceHolder.jpg')no-repeat center center fixed;
+    height: 80vh;
+    width: 100%;
+    background-size: cover;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
 }
 

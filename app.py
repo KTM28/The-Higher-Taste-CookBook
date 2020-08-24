@@ -52,6 +52,7 @@ def insert_recipe():
         'recipe_img': request.form.get('recipe_img'),
         'added_date': request.form.get('added_date')
     })
+    flash('Your Recipe has been Added Sucessfully')
     return redirect(url_for('get_recipes'))
     
 
@@ -96,6 +97,13 @@ def update_recipe(recipe_id):
                 })
     flash('Your Recipe has been Updated Sucessfully')
     return redirect(url_for('get_recipes'))
+
+
+@app.route('/delete_recipe/<recipe_id>')
+def delete_recipe(recipe_id):
+    mongo.db.recipe.remove({'_id': ObjectId(recipe_id)})
+    return redirect(url_for('get_recipes'))
+
 
 
 

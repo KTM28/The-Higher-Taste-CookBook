@@ -1,5 +1,5 @@
 {% extends 'base.html' %} {% block content %}
-<main class="recipe-form">
+<div class="container">
     <h3><i class="prefix material-icons">menu_book</i>Edit Recipe</h3>
 
     <div class="row">
@@ -81,7 +81,7 @@
                     <i class="prefix fas fa-mortar-pestle"></i>
                     <textarea id="ingredients" name="ingredients" type="text" class="validate materialize-textarea"
                         required>{{recipe.ingredients}}</textarea>
-                    <label for="ingredients">Recipe Ingredients(Add each ingriedients in new line)</label>
+                    <label for="ingredients">Recipe Ingredients</label>
                 </div>
             </div>
             <div class="row">
@@ -89,20 +89,22 @@
                     <i class="prefix fas fa-clipboard-list"></i>
                     <textarea id="instruction" name="instruction" type="text" class="validate materialize-textarea"
                         required>{{recipe.instruction}}</textarea>
-                    <label for="instruction">Recipe Instruction(Add each instruction in new line)</label>
+                    <label for="instruction">Recipe Instruction</label>
                 </div>
             </div>
             <div class="row">
                 <div class="input-field col s12">
                     <i class="prefix fas fa-camera"></i>
-                    <input id="recipe_img" name="recipe_img" type="text" class="validate materialize-textarea" value="{{recipe.recipe_img}}">
+                    <input id="recipe_img" name="recipe_img" type="text" class="validate materialize-textarea"
+                        value="{{recipe.recipe_img}}">
                     <label for="recipe_img">Add Image URL</label>
                 </div>
             </div>
             <div class="row">
                 <div class="input-field col s12 m6 l3">
                     <i class="prefix far fa-calendar-alt"></i>
-                    <input id="added_date" name="added_date" type="text" class="datepicker" value="{{recipe.added_date}}">
+                    <input id="added_date" name="added_date" type="text" class="datepicker"
+                        value="{{recipe.added_date}}">
                     <label for="added_date">Date of Creation</label>
                 </div>
             </div>
@@ -115,6 +117,6 @@
             </div>
         </form>
     </div>
+</div>
 
-</main>
 {% endblock %}
