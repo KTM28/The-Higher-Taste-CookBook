@@ -1,0 +1,38 @@
+  {% extends "base.html" %}{% block content %}
+
+  <div class="row">
+      <div class="col s12 m4 offset-m4">
+
+          <div class="card z-depth-3">
+              <form method="POST" action="{{ url_for('login_user')}}">
+                  <div class="card-action green lighten 1 white-text">
+                      <h3>Login Form</h3>
+                  </div>
+
+                  <div class="card-content">
+                      <div class="form-field">
+                          <label for="username">Username</label>
+                          <input type="text" id="username" name="username" placeholder="Username" class="validate"
+                              required><br>
+                      </div>
+
+                      <div class="form-field">
+                          <label for="password">Password</label>
+                          <input type="password" id="password" name="password" placeholder="Password" class="validate"
+                              required><br>
+                      </div>
+
+                      <div class="form-field">
+                          <button class="btn-large green" type="submit" name="action">Login</button>
+                      </div><br>
+                      <p>Haven't Registered with Us?<br><span><a href="{{ url_for('register_user')}}">Sign Up</a></span>
+                      </p>
+                  </div>
+              </form>
+          </div>
+
+      </div>
+  </div>
+
+
+  {% endblock %}
