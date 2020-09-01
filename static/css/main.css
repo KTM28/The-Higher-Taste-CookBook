@@ -1,12 +1,11 @@
+
+/* Header */
 body {
     margin: 0;
     height: 100%;
     padding: 0;
 }
 
-.room {
-    margin-top: 10px;
-}
 
 .bg-orange {
     background-color: #DB400B;
@@ -15,6 +14,9 @@ body {
 .font-white {
     color: #ffffff;
 }
+
+
+/* Buttons */
 
 .btn-small {
     display: block;
