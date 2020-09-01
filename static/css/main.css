@@ -22,12 +22,12 @@ body {
     color: #ffffff;
 }
 
+
+
 /* get recipe recipes.html */
 .center-cols > .col{
     float: none;
-    /* disable the float */
     display: inline-block;
-    /* make blocks inline-block */
     text-align: initial;
 }
 
@@ -42,6 +42,12 @@ body {
 
 .font-light {
     font-weight: lighter;
+}
+
+hr {
+    background-color: #F7E800;
+    height: 5px;
+    border: none;
 }
 
 
@@ -119,12 +125,7 @@ body {
     color: #DB400B;
 }
 
-hr {
-    background-color: #F7E800;
-    height: 5px;
-    border: none;
-}
-
+/* Home page */
 .home-page {
     background: url('../images/292-3852x2556.jpg')no-repeat center center fixed;
     -webkit-background-size: cover;
@@ -134,3 +135,25 @@ hr {
     height: 100vh;
 }
 
+/* search form  */
+.search-input input[type=text] {
+    width: 300px;
+    box-sizing: border-box;
+    border: 2px solid #ccc;
+    border-radius: 6px;
+    font-size: 16px;
+    background-color: white;
+    background-image: url('../images/searchIcon.png');
+    background-position: 10px 10px;
+    background-repeat: no-repeat;
+    padding: 12px 20px 12px 40px;
+    /* -webkit-transition: width 0.4s ease-in-out;
+    transition: width 0.4s ease-in-out; */
+}
+
+div.container4 form {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
