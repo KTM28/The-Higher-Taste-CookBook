@@ -14,8 +14,6 @@ body {
 
 /* Header */
 
-
-
 .bg-orange {
     background-color: #DB400B;
 }
@@ -23,6 +21,18 @@ body {
 .font-white {
     color: #ffffff;
 }
+
+/* get recipe recipes.html */
+.center-cols > .col{
+    float: none;
+    /* disable the float */
+    display: inline-block;
+    /* make blocks inline-block */
+    text-align: initial;
+}
+
+
+
 
 /* Recipe view page */
 .font-orange {
