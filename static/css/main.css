@@ -1,10 +1,19 @@
+body {
+    min-height: 100vh;
+    font-family: 'Architects Daughter', cursive, sans-serif;
+    font-weight: bold;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 0;
+    margin: 0;
+    text-decoration: none;
+    list-style: none;
+}
+
 
 /* Header */
-body {
-    margin: 0;
-    height: 100%;
-    padding: 0;
-}
+
 
 
 .bg-orange {
@@ -15,13 +24,20 @@ body {
     color: #ffffff;
 }
 
+/* Recipe view page */
+.font-orange {
+    color: #FF8008;
+    font-weight: bolder;
+}
+
+.font-light {
+    font-weight: lighter;
+}
+
+
 
 /* Buttons */
-
 .btn-small {
-    display: block;
-    margin-left: auto;
-    margin-right: 0;
     background-color: #DB400B;
 }
 
@@ -33,6 +49,60 @@ body {
     color: white;
     box-shadow: none;
 }
+
+.deletebtn {
+    background-color: #f44336;
+}
+
+.cancelbtn {
+    background-color: #ccc;
+    color: #000000;
+}
+
+.cancelbtn,
+.deletebtn {
+    float: left;
+    width: 50%;
+    text-align: center;
+    margin: 8px 0;
+    color: #ffffff;
+}
+
+.cancelbtn {
+    background-color: #ccc;
+    color: #000000;
+}
+
+.deletebtn {
+    background-color: #f44336;
+}
+
+.cancelbtn,
+.deletebtn:hover,
+:active,
+:focus {
+    opacity: 1;
+}
+
+
+.btn-large {
+    width: 100%;
+}
+
+.btn-flat:hover {
+    opacity: 1;
+}
+
+
+/* Delete Modal */
+.delete-modal {
+    width: fit-content;
+}
+
+.modal-content {
+    text-align: center;
+}
+
 
 
 .color-org {
