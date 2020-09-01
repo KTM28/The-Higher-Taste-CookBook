@@ -10,7 +10,7 @@
         </div>
         
         <div class="row container4 center-align">
-            <form class="search-input col" action="" method="POST">
+            <form class="search-input col" action="{{ url_for('search_recipe') }}" method="POST">
                 <input class="validate" placeholder="Search Recipe.." type="text" id="find_recipes" name="find_recipes"
                     required>
 
