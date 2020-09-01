@@ -2,6 +2,7 @@ import os
 from flask import Flask, render_template, redirect, request, session, flash, url_for
 from flask_pymongo import PyMongo, pymongo
 from bson.objectid import ObjectId
+import bcrypt
 
 app = Flask(__name__)
 app.config["MONGO_DBNAME"] = 'myCookBook'
@@ -15,6 +16,25 @@ mongo = PyMongo(app)
 @app.route('/')
 def home_template():
     return render_template('home.html')
+
+@app.route('/register_user', methods=['POST', 'GET'])
+def register_user():
+    if request.method == 'POST':
+        users = mongo.db.users
+        existing_user = users.find_one({'username':
+                                        request.form.get('username').lower()})
+        if existing_user is None:
+            hashpass = bcrypt.hashpw(
+                request.form['password'].encode('utf-8'), bcrypt.gensalt())
+            users.insert_one({'username': request.form['username'],
+                            'password': hashpass,})
+            session['username'] = request.form['username']
+            flash(
+                "Thank you for registering, please login to view more recipes and add your own!"
+            )
+            return redirect(url_for("login_user"))
+        flash('Username already exists')
+    return render_template('register.html', login_page=True)
 
 
 
