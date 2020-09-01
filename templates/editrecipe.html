@@ -110,10 +110,14 @@
             </div>
 
             <div class="row">
-                <button class="btn waves-effect waves-light" type="submit" name="action">
-                    Update
-                    <i class="fas fa-folder-plus"></i>
-                </button>
+                <div class="col s12">
+                    <a href="{{ url_for('view_recipe', recipe_id=recipe._id) }}" class="modal-close waves-effect waves-green btn red">Cancel</a>
+
+                    <button class="btn waves-effect waves-light btn-small" type="submit" name="action">
+                        Update
+                        <i class="fas fa-folder-plus btn-i"></i>
+                    </button>
+                </div>
             </div>
         </form>
     </div>
