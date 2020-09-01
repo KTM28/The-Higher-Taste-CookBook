@@ -29,7 +29,7 @@ body {
 .btn-small:active,
 .btn-small:focus,
 .btn-small:active:focus {
-    background-color: #60AF42;
+    background-color: #ff2600;
     color: white;
     box-shadow: none;
 }
@@ -46,14 +46,11 @@ hr {
 }
 
 .home-page {
-    position: relative;
-    background: url('../images/recipePlaceHolder.jpg')no-repeat center center fixed;
-    height: 80vh;
-    width: 100%;
-    background-size: cover;
+    background: url('../images/292-3852x2556.jpg')no-repeat center center fixed;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
     background-size: cover;
+    height: 100vh;
 }
 

@@ -1,5 +1,4 @@
 import os
-import math
 from flask import Flask, render_template, redirect, request, session, flash, url_for
 from flask_pymongo import PyMongo, pymongo
 from bson.objectid import ObjectId
@@ -99,11 +98,11 @@ def update_recipe(recipe_id):
     return redirect(url_for('get_recipes'))
 
 
-@app.route('/delete_recipe/<recipe_id>')
+@app.route("/delete_recipe/<recipe_id>")
 def delete_recipe(recipe_id):
-    mongo.db.recipe.remove({'_id': ObjectId(recipe_id)})
-    return redirect(url_for('get_recipes'))
-
+    mongo.db.recipes.remove({"_id": ObjectId(recipe_id)})
+    flash("Recipe Successfully Deleted")
+    return redirect(url_for("get_recipes"))
 
 
 
