@@ -105,7 +105,12 @@ def delete_recipe(recipe_id):
     return redirect(url_for("get_recipes"))
 
 
-
+@app.route("/search_recipe", methods=["POST"])
+def search_recipe():
+    find_recipes = request.form.get("find_recipes")
+    mongo.db.recipes.create_index([("$**", "text")])
+    recipe = recipe = mongo.db.recipes.find({"$text": {"$search": find_recipes}})
+    return render_template("search.html", recipe=recipe, find=True)
 
 
 
