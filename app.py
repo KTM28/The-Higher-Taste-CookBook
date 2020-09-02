@@ -60,6 +60,15 @@ def register_user():
     return render_template("register.html", login_page=True)
 
 
+
+@app.route('/logout_user')
+def logout_user():
+    if 'username' in session:
+        session['logged_in'] = False
+        session.pop('username')
+        flash('You were logged out.')
+    return render_template('home.html') 
+
 @app.route("/get_recipes")
 def get_recipes():
     """retrieve the recipes from the database and render below into the template"""
