@@ -213,3 +213,13 @@ div.container4 form {
     font-size: 20px;
     font-weight: bold;
 }
+
+
+/*------ Media Queries --------*/
+
+/* for logo size in mobile devices */
+@media (max-width: 450px) {
+    nav .brand-logo {
+        font-size: 20px;
+    }
+}
