@@ -15,6 +15,16 @@
 
 <body>
     <header>
+        {% if session['logged_in'] == True %}
+
+        <div class="card orange lighten-1 white-text margin-less">
+            <div class="center-align">
+                {{ session['username']|capitalize }}
+            </div>
+        </div>
+
+        {% endif %}
+
         <nav class="bg-org">
             <div class="nav-wrapper">
                 <a href="{{ url_for('home_template')}}" class="brand-logo">The Higher Taste</a>
@@ -39,57 +49,63 @@
                     <li><a href="{{ url_for('logout_user') }}">Logout</a></li>
                     <li><a href="{{ url_for('login_user') }}">Login</a></li>
                 </ul>
-               
+
             </div>
         </nav>
 
+    </header>
+    
+    <main>
+        <div>
+            <div class="container">
 
-        <main>
-            <div class="row">
                 <div class="col s12">
                     {% with flash_messages = get_flashed_messages(with_categories=true) %}
                     {% if flash_messages %}
                     {% for category, flash_message in flash_messages %}
-                    <div class="container card alert red darken-1 white-text  {{ category }}">
+                    <div class="container card alert red darken-1 white-text {{ category }}">
                         <p>{{ flash_message|capitalize }}</p>
                     </div>
                     {% endfor %} {% endif %} {% endwith %}
                 </div>
+
             </div>
-            {% block content %}
-            {% endblock %}
-        </main>
-        <footer class="page-footer bg-org">
+        </div>
+        {% block content %}
+        {% endblock %}
+    </main>
+    
+    <footer class="page-footer bg-org">
+        <div class="container">
+            <div class="row">
+                <div class="col l3 offset-12 s12">
+                    <ul class="footer-link">
+                        <li><a href="{{ url_for('home_template')}}">Home</a></li>
+                        <li><a href="{{ url_for('get_recipes')}}">Recipes</a></li>
+                        <li><a href="collapsible.html">My Recipes</a></li>
+                        <li><a href="mobile.html">Logout</a></li>
+                        <li><a href="mobile.html">Login</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="footer-copyright">
             <div class="container">
-                <div class="row">
-                    <div class="col l3 offset-12 s12">
-                        <ul class="footer-link">
-                            <li><a href="{{ url_for('home_template')}}">Home</a></li>
-                            <li><a href="{{ url_for('get_recipes')}}">Recipes</a></li>
-                            <li><a href="collapsible.html">My Recipes</a></li>
-                            <li><a href="mobile.html">Logout</a></li>
-                            <li><a href="mobile.html">Login</a></li>
-                        </ul>
-                    </div>
-                </div>
+                © 2014 Copyright Text
+                <a class="grey-text text-lighten-4 right" href="#!">More Links</a>
             </div>
-            <div class="footer-copyright">
-                <div class="container">
-                    © 2014 Copyright Text
-                    <a class="grey-text text-lighten-4 right" href="#!">More Links</a>
-                </div>
-            </div>
-        </footer>
-        <!-- Jquery -->
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"
-            integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg=="
-            crossorigin="anonymous"></script>
-        <!-- fontawesome -->
-        <script src="https://kit.fontawesome.com/5d48e9080d.js" crossorigin="anonymous"></script>
-        <!-- Compiled and minified JavaScript -->
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-        <!-- custom Javascript -->
-        <script type="text/javascript" src="{{url_for('static', filename='js/main.js')}}"></script>
+        </div>
+    </footer>
+    <!-- Jquery -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"
+        integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg=="
+        crossorigin="anonymous"></script>
+    <!-- fontawesome -->
+    <script src="https://kit.fontawesome.com/5d48e9080d.js" crossorigin="anonymous"></script>
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <!-- custom Javascript -->
+    <script type="text/javascript" src="{{url_for('static', filename='js/main.js')}}"></script>
 
 </body>
 
