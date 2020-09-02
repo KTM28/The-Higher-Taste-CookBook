@@ -156,6 +156,17 @@ div.container4 form {
     transform: translate(-50%, -50%);
 }
 
+/* forms */
+
+.form-field input:focus+label {
+    color: #008000 !important;
+}
+
+.row .form-field input:focus {
+    border-bottom: 1px solid #008000 !important;
+    box-shadow: 0 1px 0 0 #008000 !important
+}
+
 /* footer  and navigation */
 
 .bg-org {
