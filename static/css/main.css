@@ -215,6 +215,15 @@ div.container4 form {
 }
 
 
+/* username above nav */
+.margin-less div {
+    text-align: center;
+    margin-bottom: -12px;
+    margin-top: -8px;
+}
+
+
+
 /*------ Media Queries --------*/
 
 /* for logo size in mobile devices */

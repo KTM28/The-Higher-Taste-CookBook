@@ -28,41 +28,52 @@
         <nav class="bg-org">
             <div class="nav-wrapper">
                 <a href="{{ url_for('home_template')}}" class="brand-logo">The Higher Taste</a>
-  <!-- the if statement below hides irrelavant links when user is logged in -->
-  {% if login_page is not defined %}
+                
+                <!-- the if statement below hides irrelavant links when user is logged in -->
+               
+                {% if login_page is not defined %}
                 <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
                 <ul class="right hide-on-med-and-down">
                     <li><a href="{{ url_for('home_template') }}">Home</a></li>
                     <li><a href="{{ url_for('get_recipes')}}">Recipes</a></li>
-                   
+
                     {% if session['logged_in'] == True %}
-                   
+
                     <li><a href="{{ url_for('add_recipe') }}">Add Recipe</a></li>
 
                     <li><a href="{{ url_for('user_recipes') }}">My Recipes</a></li>
                     <li><a href="{{ url_for('logout_user') }}">Logout</a></li>
-                    
+
                     {% else %}
 
                     <li><a href="{{ url_for('login_user') }}">Login</a></li>
 
                     {% endif %}
                 </ul>
+                
                 <!-- side Nav -->
                 <ul class="sidenav bg-org" id="mobile-demo">
                     <li><a href="{{ url_for('home_template') }}">Home</a></li>
                     <li><a href="{{ url_for('get_recipes') }}">Recipes</a></li>
+
+                    {% if session['logged_in'] == True %}
+
                     <li><a href="{{ url_for('add_recipe')}}">Add Recipe</a></li>
                     <li><a href="{{ url_for('user_recipes') }}">My Recipes</a></li>
                     <li><a href="{{ url_for('logout_user') }}">Logout</a></li>
-                    <li><a href="{{ url_for('login_user') }}">Login</a></li>
-                </ul>
 
+                    {% else %}
+
+                    <li><a href="{{ url_for('login_user') }}">Login</a></li>
+
+                    {% endif %}
+                </ul>
+                {% endif %}
             </div>
         </nav>
 
     </header>
-    
+
     <main>
         <div>
             <div class="container">
@@ -82,7 +93,7 @@
         {% block content %}
         {% endblock %}
     </main>
-    
+
     <footer class="page-footer bg-org">
         <div class="container">
             <div class="row">
