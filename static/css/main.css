@@ -141,6 +141,33 @@ hr {
     height: 100vh;
 }
 
+
+/* slogan in home page */
+
+.slogan div h3 {
+    font-size: 30px;
+    color: #3a005c;
+    width: 30%;
+    animation: text 2000ms forwards;
+    animation-timing-function: ease-in;
+}
+
+
+@keyframes text {
+    from {
+        width: 0%;
+    }
+
+    to {
+        width: 30%;
+    }
+}
+
+.slogan div p {
+    font-size: 30px;
+}
+
+
 /* search form  */
 .search-input input[type=text] {
     width: 300px;
@@ -162,7 +189,7 @@ div.container4 form {
     transform: translate(-50%, -50%);
 }
 
-/* forms */
+/* recipe and login forms */
 
 .form-field input:focus+label {
     color: #008000 !important;
