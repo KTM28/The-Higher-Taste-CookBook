@@ -69,6 +69,13 @@ def logout_user():
         flash('You were logged out.')
     return render_template('home.html') 
 
+
+@app.route('/user_recipes')
+def user_recipes():
+    recipe = mongo.db.recipes.find({"added_by": session["username"]})
+    return render_template('recipes.html', recipe=recipe, user_recipes=True)
+
+
 @app.route("/get_recipes")
 def get_recipes():
     """retrieve the recipes from the database and render below into the template"""
