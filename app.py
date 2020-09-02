@@ -155,6 +155,7 @@ def update_recipe(recipe_id):
             "instruction": request.form.get("instruction"),
             "recipe_img": request.form.get("recipe_img"),
             "added_date": request.form.get("added_date"),
+            "added_by": session["username"]
         },
     )
     flash("Your Recipe has been Updated Sucessfully")
