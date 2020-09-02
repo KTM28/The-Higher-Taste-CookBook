@@ -200,6 +200,7 @@ div.container4 form {
     box-shadow: 0 1px 0 0 #008000 !important
 }
 
+
 /* footer  and navigation */
 
 .bg-org {
@@ -213,6 +214,53 @@ div.container4 form {
     font-size: 20px;
     font-weight: bold;
 }
+
+
+/* footer Only */
+.footer-link li {
+    box-sizing: border-box;
+    width: 10em;
+    height: 2em;
+    font-size: 20px;
+    border-radius: 0.5em;
+    margin: 0.5em;
+    box-shadow: 0 0 1em rgba(0, 0, 0, 0.2);
+    font-family: sans-serif;
+    text-transform: capitalize;
+    line-height: 3em;
+    transition: 0.3s;
+    cursor: pointer;
+}
+
+.footer-link li a {
+    color: #f72003;
+}
+
+
+.footer-link li:nth-child(odd) {
+    background: linear-gradient(to right, #ffffff, #FF8008);
+    text-align: left;
+    padding-left: 10%;
+    transform: perspective(500px) rotateY(45deg);
+}
+
+.footer-link li:nth-child(even) {
+    background: linear-gradient(to left, #ffffff, #FF8008);
+    text-align: right;
+    padding-right: 10%;
+    transform: perspective(500px) rotateY(-45deg);
+}
+
+.footer-link li:nth-child(odd):hover {
+    transform: perspective(200px) rotateY(45deg);
+    padding-left: 5%;
+}
+
+.footer-link li:nth-child(even):hover {
+    transform: perspective(200px) rotateY(-45deg);
+    padding-right: 5%;
+}
+
 
 
 /* username above nav */

@@ -101,9 +101,13 @@
                     <ul class="footer-link">
                         <li><a href="{{ url_for('home_template')}}">Home</a></li>
                         <li><a href="{{ url_for('get_recipes')}}">Recipes</a></li>
-                        <li><a href="collapsible.html">My Recipes</a></li>
-                        <li><a href="mobile.html">Logout</a></li>
-                        <li><a href="mobile.html">Login</a></li>
+                        {% if session['logged_in'] == True %}
+                        <li><a href="{{ url_for('add_recipe')}}">Add Recipes</a></li>
+                        <li><a href="{{ url_for('user_recipes') }}">My Recipes</a></li>
+                        <li><a href="{{ url_for('logout_user') }}">Logout</a></li>
+                        {% else %}
+                        <li><a href="{{ url_for('login_user') }}">Login</a></li>
+                        {% endif %}
                     </ul>
                 </div>
             </div>
