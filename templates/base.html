@@ -50,7 +50,7 @@
                     {% with flash_messages = get_flashed_messages(with_categories=true) %}
                     {% if flash_messages %}
                     {% for category, flash_message in flash_messages %}
-                    <div class="container alert {{ category }}">
+                    <div class="container card alert red darken-1 white-text  {{ category }}">
                         <p>{{ flash_message|capitalize }}</p>
                     </div>
                     {% endfor %} {% endif %} {% endwith %}
