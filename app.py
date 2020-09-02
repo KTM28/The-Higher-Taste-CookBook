@@ -120,23 +120,26 @@ def view_recipe(recipe_id):
     the_recipe = mongo.db.recipes.find_one({"_id": ObjectId(recipe_id)})
     return render_template("viewrecipe.html", recipe=the_recipe)
 
-
-
 @app.route("/edit_recipe/<recipe_id>")
 def edit_recipe(recipe_id):
-    the_recipe = mongo.db.recipes.find_one({"_id": ObjectId(recipe_id)})
-    all_cuisines = mongo.db.cuisines.find().sort("cuisine")
-    all_recipetype = mongo.db.recipetype.find().sort("recipe_type")
-    all_servings = mongo.db.servings.find()
-    all_cooktimes = mongo.db.cooktime.find()
-    return render_template(
-        "editrecipe.html",
-        recipe=the_recipe,
-        cuisines=all_cuisines,
-        recipetype=all_recipetype,
-        servings=all_servings,
-        cooktime=all_cooktimes,
-    )
+    the_owner = mongo.db.recipes.find_one({"_id": ObjectId(recipe_id)})
+    if session["username"] == the_owner['added_by']:
+        the_recipe = mongo.db.recipes.find_one({"_id": ObjectId(recipe_id)})
+        all_cuisines = mongo.db.cuisines.find().sort("cuisine")
+        all_recipetype = mongo.db.recipetype.find().sort("recipe_type")
+        all_servings = mongo.db.servings.find()
+        all_cooktimes = mongo.db.cooktime.find()
+        return render_template(
+            "editrecipe.html",
+            recipe=the_recipe,
+            cuisines=all_cuisines,
+            recipetype=all_recipetype,
+            servings=all_servings,
+            cooktime=all_cooktimes,
+                                )   
+    else:
+        return redirect(url_for('get_recipes')) 
+
 
 
 @app.route("/update_recipe/<recipe_id>", methods=["POST"])
@@ -156,8 +159,8 @@ def update_recipe(recipe_id):
             "recipe_img": request.form.get("recipe_img"),
             "added_date": request.form.get("added_date"),
             "added_by": session["username"]
-        },
-    )
+            }
+        ),
     flash("Your Recipe has been Updated Sucessfully")
     return redirect(url_for("get_recipes"))
 
