@@ -108,6 +108,7 @@ def insert_recipe():
             "instruction": request.form.get("instruction"),
             "recipe_img": request.form.get("recipe_img"),
             "added_date": request.form.get("added_date"),
+            "added_by": session["username"]
         }
     )
     flash("Your Recipe has been Added Sucessfully")
@@ -116,11 +117,9 @@ def insert_recipe():
 
 @app.route("/view_recipe/<recipe_id>")
 def view_recipe(recipe_id):
-    try:
-        the_recipe = mongo.db.recipes.find_one({"_id": ObjectId(recipe_id)})
-        return render_template("viewrecipe.html", recipe=the_recipe)
-    except Exception:
-        return render_template("404.html")
+    the_recipe = mongo.db.recipes.find_one({"_id": ObjectId(recipe_id)})
+    return render_template("viewrecipe.html", recipe=the_recipe)
+
 
 
 @app.route("/edit_recipe/<recipe_id>")

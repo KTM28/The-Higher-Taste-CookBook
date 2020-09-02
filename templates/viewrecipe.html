@@ -4,8 +4,8 @@
         {% if recipe.recipe_img %}
         <img class="responsive-img circle" src="{{recipe.recipe_img}}" width="400" height="200">
         {% else %}
-        <img class="responsive-img" src="{{ url_for('static', filename='images/recipePlaceHolder.jpg') }}"
-            width="400" height="400">
+        <img class="responsive-img" src="{{ url_for('static', filename='images/recipePlaceHolder.jpg') }}" width="400"
+            height="400">
         {% endif %}
     </div>
     <div class="row center-align recipe-category">
@@ -62,6 +62,7 @@
         <hr>
     </div>
     <br>
+    {% if session.username == recipe.added_by %}
     <div class="row">
         <div class="col s12">
             <a href="{{ url_for('edit_recipe', recipe_id=recipe._id) }}" class="waves-effect waves-light btn-small"><i
@@ -80,7 +81,7 @@
                 class="modal-close waves-effect waves-green btn-flat deletebtn">Delete</a>
         </div>
     </div>
-
+    {% endif%}
 </div>
 
 {% endblock %}
