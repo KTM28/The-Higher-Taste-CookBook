@@ -61,20 +61,19 @@ def register_user():
     return render_template("register.html", login_page=True)
 
 
-
-@app.route('/logout_user')
+@app.route("/logout_user")
 def logout_user():
-    if 'username' in session:
-        session['logged_in'] = False
-        session.pop('username')
-        flash('You were logged out.')
-    return render_template('home.html') 
+    if "username" in session:
+        session["logged_in"] = False
+        session.pop("username")
+        flash("You were logged out.")
+    return render_template("home.html")
 
 
-@app.route('/user_recipes')
+@app.route("/user_recipes")
 def user_recipes():
     recipe = mongo.db.recipes.find({"added_by": session["username"]})
-    return render_template('recipes.html', recipe=recipe, user_recipes=True)
+    return render_template("recipes.html", recipe=recipe, user_recipes=True)
 
 
 @app.route("/get_recipes")
@@ -111,7 +110,7 @@ def insert_recipe():
             "instruction": request.form.get("instruction"),
             "recipe_img": request.form.get("recipe_img"),
             "added_date": today_date,
-            "added_by": session["username"]
+            "added_by": session["username"],
         }
     )
     flash("Your Recipe has been Added Sucessfully")
@@ -123,10 +122,11 @@ def view_recipe(recipe_id):
     the_recipe = mongo.db.recipes.find_one({"_id": ObjectId(recipe_id)})
     return render_template("viewrecipe.html", recipe=the_recipe)
 
+
 @app.route("/edit_recipe/<recipe_id>")
 def edit_recipe(recipe_id):
     the_owner = mongo.db.recipes.find_one({"_id": ObjectId(recipe_id)})
-    if session["username"] == the_owner['added_by']:
+    if session["username"] == the_owner["added_by"]:
         the_recipe = mongo.db.recipes.find_one({"_id": ObjectId(recipe_id)})
         all_cuisines = mongo.db.cuisines.find().sort("cuisine")
         all_recipetype = mongo.db.recipetype.find().sort("recipe_type")
@@ -139,10 +139,9 @@ def edit_recipe(recipe_id):
             recipetype=all_recipetype,
             servings=all_servings,
             cooktime=all_cooktimes,
-                                )   
+        )
     else:
-        return redirect(url_for('get_recipes')) 
-
+        return redirect(url_for("get_recipes"))
 
 
 @app.route("/update_recipe/<recipe_id>", methods=["POST"])
@@ -164,9 +163,9 @@ def update_recipe(recipe_id):
             "recipe_img": request.form.get("recipe_img"),
             "added_date": request.form.get("added_date"),
             "updated_date": today_date,
-            "added_by": session["username"]
-            }
-        ),
+            "added_by": session["username"],
+        },
+    ),
     flash("Your Recipe has been Updated Sucessfully")
     return redirect(url_for("get_recipes"))
 
@@ -184,6 +183,16 @@ def search_recipe():
     mongo.db.recipes.create_index([("$**", "text")])
     recipe = recipe = mongo.db.recipes.find({"$text": {"$search": find_recipes}})
     return render_template("search.html", recipe=recipe, find=True)
+
+
+@app.route("/likes/<recipe_id>")
+def likes(recipe_id):
+
+    the_recipe = mongo.db.recipes.find_one_and_update(
+        {"_id": ObjectId(recipe_id)}, {"$inc": {"likes": 1}}
+    )
+    recipe = mongo.db.recipes.find_one({"_id": ObjectId(recipe_id)})
+    return redirect(url_for("view_recipe", recipe_id=recipe_id))
 
 
 if __name__ == "__main__":
