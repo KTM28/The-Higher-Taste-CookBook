@@ -1,5 +1,6 @@
 import os
 from flask import Flask, render_template, redirect, request, session, flash, url_for
+from datetime import date
 from flask_pymongo import PyMongo, pymongo
 from bson.objectid import ObjectId
 import bcrypt
@@ -95,6 +96,8 @@ def add_recipe():
 
 @app.route("/insert_recipe", methods=["POST"])
 def insert_recipe():
+    today = date.today()
+    today_date = today.strftime("%d %B %Y")
     recipe = mongo.db.recipes
     recipe.insert_one(
         {
@@ -107,7 +110,7 @@ def insert_recipe():
             "ingredients": request.form.get("ingredients"),
             "instruction": request.form.get("instruction"),
             "recipe_img": request.form.get("recipe_img"),
-            "added_date": request.form.get("added_date"),
+            "added_date": today_date,
             "added_by": session["username"]
         }
     )
