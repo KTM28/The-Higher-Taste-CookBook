@@ -147,6 +147,8 @@ def edit_recipe(recipe_id):
 
 @app.route("/update_recipe/<recipe_id>", methods=["POST"])
 def update_recipe(recipe_id):
+    today = date.today()
+    today_date = today.strftime("%d %B %Y")
     recipe = mongo.db.recipes
     recipe.update(
         {"_id": ObjectId(recipe_id)},
@@ -161,6 +163,7 @@ def update_recipe(recipe_id):
             "instruction": request.form.get("instruction"),
             "recipe_img": request.form.get("recipe_img"),
             "added_date": request.form.get("added_date"),
+            "updated_date": today_date,
             "added_by": session["username"]
             }
         ),

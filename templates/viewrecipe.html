@@ -60,6 +60,11 @@
             <p>{{recipe.added_date}}</p>
         </div>
         <hr>
+        <div class="row">
+            <h5>Last Updated</h5>
+            <p>{{recipe.updated_date}}</p>
+        </div>
+        <hr>
     </div>
     <br>
     {% if session.username == recipe.added_by %}
