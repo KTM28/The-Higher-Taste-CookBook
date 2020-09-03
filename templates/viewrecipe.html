@@ -94,6 +94,12 @@
         </div>
     </div>
     {% endif%}
+    <div class="col s12">
+        <a href="{{ url_for('likes', recipe_id=recipe._id) }}"
+            class="waves-effect waves-light white-text  orange btn btn-flat">
+            <i class="far fa-thumbs-up fa-2x" aria-hidden="true">like</i>
+        </a>
+    </div>
 </div>
 
 {% endblock %}
