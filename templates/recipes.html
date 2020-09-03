@@ -27,6 +27,10 @@
           <a href="{{ url_for('view_recipe', recipe_id=recipes._id) }}"
             class="waves-effect waves-light view-btn btn-small"><i
               class="material-icons left far fa-eye btn-i"></i>View</a>
+          <div>
+            <strong><i class="fas fa-heart right red-text"
+                aria-hidden="true">&nbsp&nbsp{{recipes.likes}}</i></strong><br>
+          </div>
         </div>
 
       </div>
