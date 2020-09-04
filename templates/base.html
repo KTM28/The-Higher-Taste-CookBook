@@ -24,53 +24,72 @@
         </div>
 
         {% endif %}
+        <div class="navbar-fixed">
+            <nav class="bg-org">
 
-        <nav class="bg-org">
-            <div class="nav-wrapper">
-                <a href="{{ url_for('home_template')}}" class="brand-logo">The Higher Taste</a>
-                
-                <!-- the if statement below hides irrelavant links when user is logged in -->
-               
-                {% if login_page is not defined %}
-                <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
-                <ul class="right hide-on-med-and-down">
-                    <li><a href="{{ url_for('home_template') }}">Home</a></li>
-                    <li><a href="{{ url_for('get_recipes')}}">Recipes</a></li>
+                <div class="nav-wrapper">
+                    <a href="{{ url_for('home_template')}}" class="brand-logo">The Higher Taste</a>
 
-                    {% if session['logged_in'] == True %}
+                    <!-- the if statement below hides irrelavant links when user is logged in -->
 
-                    <li><a href="{{ url_for('add_recipe') }}">Add Recipe</a></li>
+                    {% if login_page is not defined %}
+                    <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+                    <ul class="right hide-on-med-and-down">
+                        <li><a href="{{ url_for('home_template') }}"><i class="prefix fas fa-home"></i>&nbspHome</a>
+                        </li>
+                        <li><a href="{{ url_for('get_recipes')}}"><i class="prefix fas fa-folder"></i>&nbspRecipes</a>
+                        </li>
 
-                    <li><a href="{{ url_for('user_recipes') }}">My Recipes</a></li>
-                    <li><a href="{{ url_for('logout_user') }}">Logout</a></li>
+                        {% if session['logged_in'] == True %}
 
-                    {% else %}
+                        <li><a href="{{ url_for('add_recipe') }}"><i
+                                    class="prefix fas fa-plus-square"></i>&nbspAddRecipe</a></li>
 
-                    <li><a href="{{ url_for('login_user') }}">Login</a></li>
+                        <li><a href="{{ url_for('user_recipes') }}"><i class="prefix fas fa-user"></i>&nbspMy
+                                Recipes</a></li>
+                        <li><a href="{{ url_for('logout_user') }}"><i
+                                    class="prefix fas fa-sign-in-alt"></i>&nbspLogout</a>
+                        </li>
 
-                    {% endif %}
-                </ul>
-                
-                <!-- side Nav -->
-                <ul class="sidenav bg-org" id="mobile-demo">
-                    <li><a href="{{ url_for('home_template') }}">Home</a></li>
-                    <li><a href="{{ url_for('get_recipes') }}">Recipes</a></li>
+                        {% else %}
 
-                    {% if session['logged_in'] == True %}
+                        <li><a href="{{ url_for('login_user') }}"><i
+                                    class="prefix fas fa-sign-in-alt"></i>&nbspLogin</a>
+                        </li>
 
-                    <li><a href="{{ url_for('add_recipe')}}">Add Recipe</a></li>
-                    <li><a href="{{ url_for('user_recipes') }}">My Recipes</a></li>
-                    <li><a href="{{ url_for('logout_user') }}">Logout</a></li>
+                        {% endif %}
+                    </ul>
+            </nav>
+        </div>
+        <!-- side Nav -->
 
-                    {% else %}
+        <ul class="sidenav bg-org" id="mobile-demo">
+            <li><a href="{{ url_for('home_template') }}"><i class="prefix fas fa-home"></i>&nbspHome</a>
+            </li>
+            <li><a href="{{ url_for('get_recipes') }}"><i class="prefix fas fa-folder"></i>&nbspRecipes</a>
+            </li>
 
-                    <li><a href="{{ url_for('login_user') }}">Login</a></li>
+            {% if session['logged_in'] == True %}
 
-                    {% endif %}
-                </ul>
-                {% endif %}
-            </div>
-        </nav>
+            <li><a href="{{ url_for('add_recipe')}}"><i class="prefix fas fa-plus-square"></i>&nbspAddRecipe</a>
+            </li>
+            <li><a href="{{ url_for('user_recipes') }}"><i class="prefix fas fa-user"></i>&nbspMy
+                    Recipes</a></li>
+            <li><a href="{{ url_for('logout_user') }}"><i class="prefix fas fa-sign-in-alt"></i>&nbspLogout</a>
+            </li>
+
+            {% else %}
+
+            <li><a href="{{ url_for('login_user') }}"><i class="prefix fas fa-sign-in-alt"></i>&nbspLogin</a>
+            </li>
+
+            {% endif %}
+        </ul>
+        {% endif %}
+
+
+
+
 
     </header>
 
@@ -99,14 +118,19 @@
             <div class="row">
                 <div class="col l3 offset-12 s12">
                     <ul class="footer-link">
-                        <li><a href="{{ url_for('home_template')}}">Home</a></li>
-                        <li><a href="{{ url_for('get_recipes')}}">Recipes</a></li>
+                        <li><a href="{{ url_for('home_template')}}"><i class="prefix fas fa-home"></i>&nbspHome</a></li>
+                        <li><a href="{{ url_for('get_recipes')}}"><i class="prefix fas fa-folder"></i>&nbspRecipes</a>
+                        </li>
                         {% if session['logged_in'] == True %}
-                        <li><a href="{{ url_for('add_recipe')}}">Add Recipes</a></li>
-                        <li><a href="{{ url_for('user_recipes') }}">My Recipes</a></li>
-                        <li><a href="{{ url_for('logout_user') }}">Logout</a></li>
+                        <li><a href="{{ url_for('add_recipe')}}"><i
+                                    class="prefix fas fa-plus-square"></i>&nbspAddRecipe</a></li>
+                        <li><a href="{{ url_for('user_recipes') }}"><i class="prefix fas fa-user"></i>&nbspMy
+                                Recipes</a></li>
+                        <li><a href="{{ url_for('logout_user') }}"><i
+                                    class="prefix fas fa-sign-in-alt"></i>&nbspLogout</a></li>
                         {% else %}
-                        <li><a href="{{ url_for('login_user') }}">Login</a></li>
+                        <li><a href="{{ url_for('login_user') }}"><i
+                                    class="prefix fas fa-sign-in-alt"></i>&nbspLogin</a></li>
                         {% endif %}
                     </ul>
                 </div>
