@@ -389,5 +389,12 @@ div.container4 form {
 @media (max-width: 450px) {
     nav .brand-logo {
         font-size: 20px;
+        top: -6%;
+    }
+}
+
+@media only screen and (max-width: 590px) {
+    nav .brand-logo {
+        left: 43%;
     }
 }
