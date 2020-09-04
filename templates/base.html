@@ -28,7 +28,8 @@
             <nav class="bg-org">
 
                 <div class="nav-wrapper">
-                    <a href="{{ url_for('home_template')}}" class="brand-logo">The Higher Taste</a>
+                    <a href="{{ url_for('home_template')}}" class="brand-logo">The Higher Taste<img
+                            class="responsive-img" src="{{ url_for('static', filename='images/logo.png')}}"></a>
 
                     <!-- the if statement below hides irrelavant links when user is logged in -->
 
