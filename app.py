@@ -142,7 +142,7 @@ def edit_recipe(recipe_id):
         )
     else:
         return redirect(url_for("get_recipes"))
-
+    
 
 @app.route("/update_recipe/<recipe_id>", methods=["POST"])
 def update_recipe(recipe_id):
@@ -193,6 +193,10 @@ def likes(recipe_id):
     )
     recipe = mongo.db.recipes.find_one({"_id": ObjectId(recipe_id)})
     return redirect(url_for("view_recipe", recipe_id=recipe_id))
+
+@app.errorhandler(404)
+def not_found(e):
+    return render_template("error-page.html"), 500
 
 
 if __name__ == "__main__":
