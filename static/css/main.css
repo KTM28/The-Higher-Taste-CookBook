@@ -34,10 +34,13 @@ body {
     float: none;
     display: inline-block;
     text-align: initial;
+    margin-bottom: 60px;
 }
 
-
-
+/* recipe search page and my recipe page */
+.recipe-pg-margin{
+  margin-bottom: 50%; 
+}
 
 /* Recipe view page */
 .font-orange {
@@ -214,6 +217,10 @@ div.container4 form {
     transform: translate(-50%, -50%);
 }
 
+.mobile-margin {
+    margin-bottom: 80px;
+}
+
 /* footer  and navigation */
 
 .bg-org {
@@ -240,8 +247,7 @@ footer {
 /* username above nav */
 .margin-less div {
     text-align: center;
-    margin-bottom: -12px;
-    margin-top: -8px;
+    margin-bottom: -20px;
 }
 
 
@@ -373,7 +379,7 @@ footer {
     }
 }
 
-/* login and registration form */
+/* login , registration and recipe form */
 
 @media (max-width: 600px) {
     .user-login {
@@ -382,4 +388,13 @@ footer {
         left: 50%;
         transform: translate(-0%, -50%);
     }
+    
+    .mobile-margin {
+        margin-bottom: 80px;
+    }
+
+    .recipe-pg-margin{
+        margin-bottom: 50%;
+    }
 }
+/* all recipe page */

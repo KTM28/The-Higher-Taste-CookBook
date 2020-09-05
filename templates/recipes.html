@@ -11,7 +11,7 @@
   <div class="row center-cols center-align">
     {% for recipes in recipe %}
     <div class="col l3">
-      <div class="card">
+      <div class="card card-margin">
         <div class="card-image">
           {% if recipes.recipe_img %}
           <img src="{{recipes.recipe_img}}" width="300" height="200">
@@ -41,7 +41,7 @@
   {% else %}
   <h4 class="center-align">No Recipe Found</h4>
   {% if 'username' in session %}
-  <div class="row">
+  <div class="row recipe-pg-margin">
     <div class="col s12">
       <h5>Please add a recipe to share with us!</h5>
       <a href="{{url_for('add_recipe')}}" class="btn waves-effect waves-light btn-small">Add Recipe <i
