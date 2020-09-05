@@ -1,20 +1,7 @@
 {% extends "base.html" %}{% block content %}
+
 <div class="home-page">
     <div class="container">
-
-        {% if session['logged_in'] == True %}
-        <div class="row">
-            <div class="col s12 center-align">
-                <div class="card transparent white-text margin-less">
-                    <div>
-                        <h5><i class="fas fa-user amber-text accent-4"></i> {{ session['username']|capitalize }}
-                        </h5>
-                    </div>
-                </div>
-            </div>
-        </div>
-        {% endif %}
-
         {% if 'username' not in session %}
         <div class="row slogan">
             <div class="col s12 center-align">

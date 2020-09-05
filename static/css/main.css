@@ -14,7 +14,6 @@ body {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-   
 }
 
 
@@ -139,10 +138,18 @@ hr {
     -o-background-size: cover;
     background-size: cover;
     height: 100vh;
+    position: absolute;
+    width: 100%;
+    min-height: 100vh;
+    top: 0;
 }
 
 
 /* slogan in home page */
+
+.slogan {
+    margin-top: 35px;
+}
 
 .slogan div h3 {
     font-size: 30px;
@@ -200,6 +207,12 @@ div.container4 form {
     box-shadow: 0 1px 0 0 #008000 !important
 }
 
+.user-login {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
 
 /* footer  and navigation */
 
@@ -217,50 +230,11 @@ div.container4 form {
 
 
 /* footer Only */
-.footer-link li {
-    box-sizing: border-box;
-    width: 10em;
-    height: 2em;
-    font-size: 20px;
-    border-radius: 0.5em;
-    margin: 0.5em;
-    box-shadow: 0 0 1em rgba(0, 0, 0, 0.2);
-    font-family: sans-serif;
-    text-transform: capitalize;
-    line-height: 3em;
-    transition: 0.3s;
-    cursor: pointer;
+footer {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
 }
-
-.footer-link li a {
-    color: #f72003;
-}
-
-
-.footer-link li:nth-child(odd) {
-    background: linear-gradient(to right, #ffffff, #FF8008);
-    text-align: left;
-    padding-left: 10%;
-    transform: perspective(500px) rotateY(45deg);
-}
-
-.footer-link li:nth-child(even) {
-    background: linear-gradient(to left, #ffffff, #FF8008);
-    text-align: right;
-    padding-right: 10%;
-    transform: perspective(500px) rotateY(-45deg);
-}
-
-.footer-link li:nth-child(odd):hover {
-    transform: perspective(200px) rotateY(45deg);
-    padding-left: 5%;
-}
-
-.footer-link li:nth-child(even):hover {
-    transform: perspective(200px) rotateY(-45deg);
-    padding-right: 5%;
-}
-
 
 
 /* username above nav */
@@ -393,8 +367,19 @@ div.container4 form {
     }
 }
 
-@media only screen and (max-width: 590px) {
+@media only screen and (max-width: 600px) {
     nav .brand-logo {
         left: 43%;
+    }
+}
+
+/* login and registration form */
+
+@media (max-width: 600px) {
+    .user-login {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-0%, -50%);
     }
 }

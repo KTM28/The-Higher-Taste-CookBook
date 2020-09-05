@@ -106,33 +106,23 @@
         {% endblock %}
     </main>
 
-    <footer class="page-footer bg-org">
-        <div class="container">
-            <div class="row">
-                <div class="col l3 offset-12 s12">
-                    <ul class="footer-link">
-                        <li><a href="{{ url_for('home_template')}}"><i class="prefix fas fa-home"></i>&nbspHome</a></li>
-                        <li><a href="{{ url_for('get_recipes')}}"><i class="prefix fas fa-folder"></i>&nbspRecipes</a>
-                        </li>
-                        {% if session['logged_in'] == True %}
-                        <li><a href="{{ url_for('add_recipe')}}"><i
-                                    class="prefix fas fa-plus-square"></i>&nbspAddRecipe</a></li>
-                        <li><a href="{{ url_for('user_recipes') }}"><i class="prefix fas fa-user"></i>&nbspMy
-                                Recipes</a></li>
-                        <li><a href="{{ url_for('logout_user') }}"><i
-                                    class="prefix fas fa-sign-in-alt"></i>&nbspLogout</a></li>
-                        {% else %}
-                        <li><a href="{{ url_for('login_user') }}"><i
-                                    class="prefix fas fa-sign-in-alt"></i>&nbspLogin</a></li>
-                        {% endif %}
-                    </ul>
-                </div>
-            </div>
-        </div>
+    <footer class="bg-org">
         <div class="footer-copyright">
-            <div class="container">
-                © 2014 Copyright Text
-                <a class="grey-text text-lighten-4 right" href="#!">More Links</a>
+
+            <div class="container center-align">
+                {% if session['logged_in'] == True %}
+                <div class="row">
+                    <div class="col s12 center-align">
+                        <div class="white-text margin-less">
+                            <div>
+                                <h5><i class="fas fa-user white-text accent-4"></i> {{ session['username']|capitalize }}
+                                </h5>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {% endif %}
+                <small class="white-text">&copy; Copyright 2020, The Higher Taste</small>
             </div>
         </div>
     </footer>
