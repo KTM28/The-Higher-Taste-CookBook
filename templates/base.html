@@ -15,18 +15,9 @@
 
 <body>
     <header>
-        {% if session['logged_in'] == True %}
 
-        <div class="card orange lighten-1 white-text margin-less">
-            <div class="center-align">
-                {{ session['username']|capitalize }}
-            </div>
-        </div>
-
-        {% endif %}
         <div class="navbar-fixed">
             <nav class="bg-org">
-
                 <div class="nav-wrapper">
                     <a href="{{ url_for('home_template')}}" class="brand-logo">The Higher Taste<img
                             class="responsive-img" src="{{ url_for('static', filename='images/logo.png')}}"></a>
@@ -61,9 +52,10 @@
                         {% endif %}
                     </ul>
             </nav>
-        </div>
-        <!-- side Nav -->
 
+        </div>
+
+        <!-- side Nav -->
         <ul class="sidenav bg-org" id="mobile-demo">
             <li><a href="{{ url_for('home_template') }}"><i class="prefix fas fa-home"></i>&nbspHome</a>
             </li>
