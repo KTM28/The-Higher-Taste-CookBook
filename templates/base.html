@@ -31,7 +31,7 @@
                         </li>
                         {% if session['logged_in'] == True %}
                         <li><a href="{{ url_for('add_recipe') }}"><i
-                                    class="prefix fas fa-plus-square"></i>&nbspAddRecipe</a></li>
+                                    class="prefix fas fa-plus-square"></i>&nbspAdd Recipe</a></li>
                         <li><a href="{{ url_for('user_recipes') }}"><i class="prefix fas fa-user"></i>&nbspMy
                                 Recipes</a>
                         </li>
@@ -55,7 +55,7 @@
             </li>
             <!-- the if statement below hides irrelavant links when user is logged in -->
             {% if session['logged_in'] == True %}
-            <li><a href="{{ url_for('add_recipe')}}"><i class="prefix fas fa-plus-square"></i>&nbspAddRecipe</a>
+            <li><a href="{{ url_for('add_recipe')}}"><i class="prefix fas fa-plus-square"></i>&nbspAdd Recipe</a>
             </li>
             <li><a href="{{ url_for('user_recipes') }}"><i class="prefix fas fa-user"></i>&nbspMy
                     Recipes</a>
