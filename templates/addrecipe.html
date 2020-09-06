@@ -1,99 +1,94 @@
 {% extends 'base.html' %} {% block content %}
-
-
 <div class="container">
-    <h3><i class="prefix material-icons">menu_book</i>Add Recipe</h3>
-
-    <div class="row">
-        <!-- Add Recipe Form -->
-        <form class="col s12" action="{{ url_for('insert_recipe') }}" method="POST">
-            <div class="input-field col s12 m6 l3">
-                <i class="prefix fas fa-utensils"></i>
-                <select id="cuisine" name="cuisine" required>
-                    <option value="" disabled selected>Choose your option</option>
-                    {% for cuisine in cuisines %}
-                    <option value="{{cuisine.cuisine}}">{{cuisine.cuisine}}</option>
-                    {% endfor %}
-                </select>
-                <label for="cuisine">Select Cuisine</label>
+   <h3><i class="prefix material-icons">menu_book</i>Add Recipe</h3>
+   <div class="row">
+      <!-- Add Recipe Form -->
+      <form class="col s12" action="{{ url_for('insert_recipe') }}" method="POST">
+         <div class="input-field col s12 m6 l3">
+            <i class="prefix fas fa-utensils"></i>
+            <select id="cuisine" name="cuisine" required>
+               <option value="" disabled selected>Choose your option</option>
+               {% for cuisine in cuisines %}
+               <option value="{{cuisine.cuisine}}">{{cuisine.cuisine}}</option>
+               {% endfor %}
+            </select>
+            <label for="cuisine">Select Cuisine</label>
+         </div>
+         <div class="input-field col s12 m6 l3">
+            <i class="prefix fas fa-th-list"></i>
+            <select id="recipe_type" name="recipe_type" required>
+               <option value="" disabled selected>Choose your option</option>
+               {% for type in recipetype %}
+               <option value="{{type.recipe_type}}">{{type.recipe_type}}</option>
+               {% endfor %}
+            </select>
+            <label for="recipe_type">Recipe Type</label>
+         </div>
+         <div class="input-field col s12 m6 l3">
+            <i class="prefix fas fa-hourglass-half"></i>
+            <select id="cooking_time" name="cooking_time" required>
+               <option value="" disabled selected>Choose your option</option>
+               {% for time in cooktime %}
+               <option value="{{time.cooking_time}}">{{time.cooking_time}}</option>
+               {% endfor %}
+            </select>
+            <label for="cooking_time">Cooking Time</label>
+         </div>
+         <div class="input-field col s12 m6 l3">
+            <i class="prefix fas fa-users"></i>
+            <select id="serves" name="serves" required>
+               <option value="" disabled selected>Choose your option</option>
+               {% for serving in servings %}
+               <option value="{{serving.serves}}">{{serving.serves}}</option>
+               {% endfor %}
+            </select>
+            <label for="serves">Serving</label>
+         </div>
+         <div class="row">
+            <div class="input-field col s12">
+               <i class="prefix material-icons">local_dining</i>
+               <input id="name" name="name" type="text" class="validate" required>
+               <label for="name">Recipe Name</label>
             </div>
-            <div class="input-field col s12 m6 l3">
-                <i class="prefix fas fa-th-list"></i>
-                <select id="recipe_type" name="recipe_type" required>
-                    <option value="" disabled selected>Choose your option</option>
-                    {% for type in recipetype %}
-                    <option value="{{type.recipe_type}}">{{type.recipe_type}}</option>
-                    {% endfor %}
-                </select>
-                <label for="recipe_type">Recipe Type</label>
+         </div>
+         <div class="row">
+            <div class="input-field col s12">
+               <i class="prefix fas fa-edit"></i>
+               <textarea id="description" name="description" type="text" class="validate materialize-textarea"
+                  required></textarea>
+               <label for="description">Recipe Description</label>
             </div>
-            <div class="input-field col s12 m6 l3">
-                <i class="prefix fas fa-hourglass-half"></i>
-                <select id="cooking_time" name="cooking_time" required>
-                    <option value="" disabled selected>Choose your option</option>
-                    {% for time in cooktime %}
-                    <option value="{{time.cooking_time}}">{{time.cooking_time}}</option>
-                    {% endfor %}
-                </select>
-                <label for="cooking_time">Cooking Time</label>
+         </div>
+         <div class="row">
+            <div class="input-field col s12">
+               <i class="prefix fas fa-mortar-pestle"></i>
+               <textarea id="ingredients" name="ingredients" type="text" class="validate materialize-textarea"
+                  required></textarea>
+               <label for="ingredients">Recipe Ingredients</label>
             </div>
-            <div class="input-field col s12 m6 l3">
-                <i class="prefix fas fa-users"></i>
-                <select id="serves" name="serves" required>
-                    <option value="" disabled selected>Choose your option</option>
-                    {% for serving in servings %}
-                    <option value="{{serving.serves}}">{{serving.serves}}</option>
-                    {% endfor %}
-                </select>
-                <label for="serves">Serving</label>
+         </div>
+         <div class="row">
+            <div class="input-field col s12">
+               <i class="prefix fas fa-clipboard-list"></i>
+               <textarea id="instruction" name="instruction" type="text" class="validate materialize-textarea"
+                  required></textarea>
+               <label for="instruction">Recipe Instruction</label>
             </div>
-            <div class="row">
-                <div class="input-field col s12">
-                    <i class="prefix material-icons">local_dining</i>
-                    <input id="name" name="name" type="text" class="validate" required>
-                    <label for="name">Recipe Name</label>
-                </div>
+         </div>
+         <div class="row">
+            <div class="input-field col s12">
+               <i class="prefix fas fa-camera"></i>
+               <input id="recipe_img" name="recipe_img" type="text" class="validate">
+               <label for="recipe_img">Add Image URL</label>
             </div>
-            <div class="row">
-                <div class="input-field col s12">
-                    <i class="prefix fas fa-edit"></i>
-                    <textarea id="description" name="description" type="text" class="validate materialize-textarea"
-                        required></textarea>
-                    <label for="description">Recipe Description</label>
-                </div>
-            </div>
-            <div class="row">
-                <div class="input-field col s12">
-                    <i class="prefix fas fa-mortar-pestle"></i>
-                    <textarea id="ingredients" name="ingredients" type="text" class="validate materialize-textarea"
-                        required></textarea>
-                    <label for="ingredients">Recipe Ingredients</label>
-                </div>
-            </div>
-            <div class="row">
-                <div class="input-field col s12">
-                    <i class="prefix fas fa-clipboard-list"></i>
-                    <textarea id="instruction" name="instruction" type="text" class="validate materialize-textarea"
-                        required></textarea>
-                    <label for="instruction">Recipe Instruction</label>
-                </div>
-            </div>
-            <div class="row">
-                <div class="input-field col s12">
-                    <i class="prefix fas fa-camera"></i>
-                    <input id="recipe_img" name="recipe_img" type="text" class="validate">
-                    <label for="recipe_img">Add Image URL</label>
-                </div>
-            </div>
-
-            <div class="row mobile-margin">
-                <button class="btn waves-effect waves-light  btn-small" type="submit" name="action">
-                    Add Recipe
-                    <i class="fas fa-folder-plus"></i>
-                </button>
-            </div>
-        </form>
-    </div>
+         </div>
+         <div class="row mobile-margin">
+            <button class="btn waves-effect waves-light  btn-small" type="submit" name="action">
+            Add Recipe
+            <i class="fas fa-folder-plus"></i>
+            </button>
+         </div>
+      </form>
+   </div>
 </div>
-
 {% endblock %}

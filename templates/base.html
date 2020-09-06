@@ -14,7 +14,6 @@
 </head>
 
 <body>
-   
     <header>
         <!-- Navigation Bar -->
         <div class="navbar-fixed">
@@ -22,9 +21,7 @@
                 <div class="nav-wrapper">
                     <a href="{{ url_for('home_template')}}" class="brand-logo">The Higher Taste<img
                             class="responsive-img" src="{{ url_for('static', filename='images/logo.png')}}"></a>
-
                     <!-- the if statement below hides irrelavant links when user is logged in -->
-
                     {% if login_page is not defined %}
                     <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
                     <ul class="right hide-on-med-and-down">
@@ -32,66 +29,51 @@
                         </li>
                         <li><a href="{{ url_for('get_recipes')}}"><i class="prefix fas fa-folder"></i>&nbspRecipes</a>
                         </li>
-
                         {% if session['logged_in'] == True %}
-
                         <li><a href="{{ url_for('add_recipe') }}"><i
                                     class="prefix fas fa-plus-square"></i>&nbspAddRecipe</a></li>
-
                         <li><a href="{{ url_for('user_recipes') }}"><i class="prefix fas fa-user"></i>&nbspMy
-                                Recipes</a></li>
+                                Recipes</a>
+                        </li>
                         <li><a href="{{ url_for('logout_user') }}"><i
                                     class="prefix fas fa-sign-in-alt"></i>&nbspLogout</a>
                         </li>
-
                         {% else %}
-
                         <li><a href="{{ url_for('login_user') }}"><i
                                     class="prefix fas fa-sign-in-alt"></i>&nbspLogin</a>
                         </li>
-
                         {% endif %}
                     </ul>
             </nav>
-
         </div>
-
+        
         <!-- Side Nav -->
         <ul class="sidenav bg-org" id="mobile-demo">
             <li><a href="{{ url_for('home_template') }}"><i class="prefix fas fa-home"></i>&nbspHome</a>
             </li>
             <li><a href="{{ url_for('get_recipes') }}"><i class="prefix fas fa-folder"></i>&nbspRecipes</a>
             </li>
-    <!-- the if statement below hides irrelavant links when user is logged in -->
+            <!-- the if statement below hides irrelavant links when user is logged in -->
             {% if session['logged_in'] == True %}
-
             <li><a href="{{ url_for('add_recipe')}}"><i class="prefix fas fa-plus-square"></i>&nbspAddRecipe</a>
             </li>
             <li><a href="{{ url_for('user_recipes') }}"><i class="prefix fas fa-user"></i>&nbspMy
-                    Recipes</a></li>
+                    Recipes</a>
+            </li>
             <li><a href="{{ url_for('logout_user') }}"><i class="prefix fas fa-sign-in-alt"></i>&nbspLogout</a>
             </li>
-
             {% else %}
-
             <li><a href="{{ url_for('login_user') }}"><i class="prefix fas fa-sign-in-alt"></i>&nbspLogin</a>
             </li>
-
             {% endif %}
         </ul>
         {% endif %}
-
-
-
-
-
     </header>
-
+    
     <main>
         <div>
             <!-- Flash Message -->
             <div class="container">
-
                 <div class="col s12">
                     {% with flash_messages = get_flashed_messages(with_categories=true) %}
                     {% if flash_messages %}
@@ -101,17 +83,16 @@
                     </div>
                     {% endfor %} {% endif %} {% endwith %}
                 </div>
-
             </div>
         </div>
         {% block content %}
         {% endblock %}
     </main>
-
+    
     <!-- Footer area -->
     <footer class="bg-org">
         <div class="footer-copyright">
-        <!--the if statement below Dispalys username in the footer if user is logged in -->
+            <!--the if statement below Dispalys username in the footer if user is logged in -->
             <div class="container center-align">
                 {% if session['logged_in'] == True %}
                 <div class="row">
@@ -129,6 +110,7 @@
             </div>
         </div>
     </footer>
+    
     <!-- Jquery -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"
         integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg=="
@@ -139,7 +121,6 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
     <!-- custom Javascript -->
     <script type="text/javascript" src="{{url_for('static', filename='js/main.js')}}"></script>
-
 </body>
 
 </html>

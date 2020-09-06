@@ -1,128 +1,124 @@
 {% extends 'base.html' %} {% block content %}
-
 <div class="container">
-    <h3><i class="prefix material-icons">menu_book</i>Edit Recipe</h3>
-
-    <div class="row">
-        <!-- Edit recipe Form -->
-        <form class="col s12" action="{{ url_for('update_recipe', recipe_id=recipe._id)}}" method="POST">
+   <h3><i class="prefix material-icons">menu_book</i>Edit Recipe</h3>
+   <div class="row">
+      <!-- Edit recipe Form -->
+      <form class="col s12" action="{{ url_for('update_recipe', recipe_id=recipe._id)}}" method="POST">
+         <div class="input-field col s12 m6 l3">
+            <i class="prefix fas fa-utensils"></i>
+            <select id="cuisine" name="cuisine">
+               <option value="" disabled selected>Choose your option</option>
+               {% for cuisine in cuisines %}
+               {% if cuisine.cuisine == recipe.cuisine %}
+               <option value="{{cuisine.cuisine}}" selected>{{cuisine.cuisine}}</option>
+               {% else %}
+               <option value="{{cuisine.cuisine}}">{{cuisine.cuisine}}</option>
+               {% endif %}
+               {% endfor %}
+            </select>
+            <label for="cuisine">Select Cuisine</label>
+         </div>
+         <div class="input-field col s12 m6 l3">
+            <i class="prefix fas fa-th-list"></i>
+            <select id="recipe_type" name="recipe_type">
+               <option value="" disabled selected>Choose your option</option>
+               {% for type in recipetype %}
+               {% if type.recipe_type == recipe.recipe_type %}
+               <option value="{{type.recipe_type}}" selected>{{type.recipe_type}}</option>
+               {% else %}
+               <option value="{{type.recipe_type}}">{{type.recipe_type}}</option>
+               {% endif %}
+               {% endfor %}
+            </select>
+            <label for="recipe_type">Recipe Type</label>
+         </div>
+         <div class="input-field col s12 m6 l3">
+            <i class="prefix fas fa-hourglass-half"></i>
+            <select id="cooking_time" name="cooking_time">
+               <option value="" disabled selected>Choose your option</option>
+               {% for time in cooktime %}
+               {% if time.cooking_time == recipe.cooking_time
+               %}
+               <option value="{{time.cooking_time}}" selected>{{time.cooking_time}}</option>
+               {% else %}
+               <option value="{{time.cooking_time}}">{{time.cooking_time}}</option>
+               {% endif %}
+               {% endfor %}
+            </select>
+            <label for="cooking_time">Cooking Time</label>
+         </div>
+         <div class="input-field col s12 m6 l3">
+            <i class="prefix fas fa-users"></i>
+            <select id="serves" name="serves">
+               <option value="" disabled selected>Choose your option</option>
+               {% for serving in servings %}
+               {% if serving.serves == recipe.serves %}
+               <option value="{{serving.serves}}" selected>{{serving.serves}}</option>
+               {% else %}
+               <option value="{{serving.serves}}">{{serving.serves}}</option>
+               {% endif %}
+               {% endfor %}
+            </select>
+            <label for="serves">Serving</label>
+         </div>
+         <div class="row">
+            <div class="input-field col s12">
+               <i class="prefix material-icons">local_dining</i>
+               <input id="name" name="name" type="text" class="validate" value="{{recipe.name}}" required>
+               <label for="name">Recipe Name</label>
+            </div>
+         </div>
+         <div class="row">
+            <div class="input-field col s12">
+               <i class="prefix fas fa-edit"></i>
+               <textarea id="description" name="description" type="text" class="validate materialize-textarea"
+                  required>{{recipe.description}}</textarea>
+               <label for="description">Recipe Description</label>
+            </div>
+         </div>
+         <div class="row">
+            <div class="input-field col s12">
+               <i class="prefix fas fa-mortar-pestle"></i>
+               <textarea id="ingredients" name="ingredients" type="text" class="validate materialize-textarea"
+                  required>{{recipe.ingredients}}</textarea>
+               <label for="ingredients">Recipe Ingredients</label>
+            </div>
+         </div>
+         <div class="row">
+            <div class="input-field col s12">
+               <i class="prefix fas fa-clipboard-list"></i>
+               <textarea id="instruction" name="instruction" type="text" class="validate materialize-textarea"
+                  required>{{recipe.instruction}}</textarea>
+               <label for="instruction">Recipe Instruction</label>
+            </div>
+         </div>
+         <div class="row">
+            <div class="input-field col s12">
+               <i class="prefix fas fa-camera"></i>
+               <input id="recipe_img" name="recipe_img" type="text" class="validate materialize-textarea"
+                  value="{{recipe.recipe_img}}">
+               <label for="recipe_img">Add Image URL</label>
+            </div>
+         </div>
+         <div class="row">
             <div class="input-field col s12 m6 l3">
-                <i class="prefix fas fa-utensils"></i>
-                <select id="cuisine" name="cuisine">
-                    <option value="" disabled selected>Choose your option</option>
-                    {% for cuisine in cuisines %}
-                    {% if cuisine.cuisine == recipe.cuisine %}
-                    <option value="{{cuisine.cuisine}}" selected>{{cuisine.cuisine}}</option>
-                    {% else %}
-                    <option value="{{cuisine.cuisine}}">{{cuisine.cuisine}}</option>
-                    {% endif %}
-                    {% endfor %}
-                </select>
-                <label for="cuisine">Select Cuisine</label>
+               <i class="prefix far fa-calendar-alt"></i>
+               <input id="added_date" name="added_date" type="text"
+                  value="{{recipe.added_date}}" readonly="readonly">
+               <label for="added_date">Date of Creation</label>
             </div>
-            <div class="input-field col s12 m6 l3">
-                <i class="prefix fas fa-th-list"></i>
-                <select id="recipe_type" name="recipe_type">
-                    <option value="" disabled selected>Choose your option</option>
-                    {% for type in recipetype %}
-                    {% if type.recipe_type == recipe.recipe_type %}
-                    <option value="{{type.recipe_type}}" selected>{{type.recipe_type}}</option>
-                    {% else %}
-                    <option value="{{type.recipe_type}}">{{type.recipe_type}}</option>
-                    {% endif %}
-                    {% endfor %}
-                </select>
-                <label for="recipe_type">Recipe Type</label>
+         </div>
+         <!-- Button for Cancel Edit -->
+         <div class="row mobile-margin">
+            <div class="col s12">
+               <a href="{{ url_for('view_recipe', recipe_id=recipe._id) }}" class="modal-close waves-effect waves-green btn red">Cancel</a>
+               <button class="btn waves-effect waves-light btn-small" type="submit" name="action">
+               Update
+               <i class="fas fa-folder-plus btn-i"></i>
+               </button>
             </div>
-            <div class="input-field col s12 m6 l3">
-                <i class="prefix fas fa-hourglass-half"></i>
-                <select id="cooking_time" name="cooking_time">
-                    <option value="" disabled selected>Choose your option</option>
-                    {% for time in cooktime %}
-                    {% if time.cooking_time == recipe.cooking_time
-                        %}
-                    <option value="{{time.cooking_time}}" selected>{{time.cooking_time}}</option>
-                    {% else %}
-                    <option value="{{time.cooking_time}}">{{time.cooking_time}}</option>
-                    {% endif %}
-                    {% endfor %}
-                </select>
-                <label for="cooking_time">Cooking Time</label>
-            </div>
-            <div class="input-field col s12 m6 l3">
-                <i class="prefix fas fa-users"></i>
-                <select id="serves" name="serves">
-                    <option value="" disabled selected>Choose your option</option>
-                    {% for serving in servings %}
-                    {% if serving.serves == recipe.serves %}
-                    <option value="{{serving.serves}}" selected>{{serving.serves}}</option>
-                    {% else %}
-                    <option value="{{serving.serves}}">{{serving.serves}}</option>
-                    {% endif %}
-                    {% endfor %}
-                </select>
-                <label for="serves">Serving</label>
-            </div>
-            <div class="row">
-                <div class="input-field col s12">
-                    <i class="prefix material-icons">local_dining</i>
-                    <input id="name" name="name" type="text" class="validate" value="{{recipe.name}}" required>
-                    <label for="name">Recipe Name</label>
-                </div>
-            </div>
-            <div class="row">
-                <div class="input-field col s12">
-                    <i class="prefix fas fa-edit"></i>
-                    <textarea id="description" name="description" type="text" class="validate materialize-textarea"
-                        required>{{recipe.description}}</textarea>
-                    <label for="description">Recipe Description</label>
-                </div>
-            </div>
-            <div class="row">
-                <div class="input-field col s12">
-                    <i class="prefix fas fa-mortar-pestle"></i>
-                    <textarea id="ingredients" name="ingredients" type="text" class="validate materialize-textarea"
-                        required>{{recipe.ingredients}}</textarea>
-                    <label for="ingredients">Recipe Ingredients</label>
-                </div>
-            </div>
-            <div class="row">
-                <div class="input-field col s12">
-                    <i class="prefix fas fa-clipboard-list"></i>
-                    <textarea id="instruction" name="instruction" type="text" class="validate materialize-textarea"
-                        required>{{recipe.instruction}}</textarea>
-                    <label for="instruction">Recipe Instruction</label>
-                </div>
-            </div>
-            <div class="row">
-                <div class="input-field col s12">
-                    <i class="prefix fas fa-camera"></i>
-                    <input id="recipe_img" name="recipe_img" type="text" class="validate materialize-textarea"
-                        value="{{recipe.recipe_img}}">
-                    <label for="recipe_img">Add Image URL</label>
-                </div>
-            </div>
-            <div class="row">
-                <div class="input-field col s12 m6 l3">
-                    <i class="prefix far fa-calendar-alt"></i>
-                    <input id="added_date" name="added_date" type="text"
-                        value="{{recipe.added_date}}" readonly="readonly">
-                    <label for="added_date">Date of Creation</label>
-                </div>
-            </div>
-        <!-- Button for Cancel Edit -->
-            <div class="row mobile-margin">
-                <div class="col s12">
-                    <a href="{{ url_for('view_recipe', recipe_id=recipe._id) }}" class="modal-close waves-effect waves-green btn red">Cancel</a>
-
-                    <button class="btn waves-effect waves-light btn-small" type="submit" name="action">
-                        Update
-                        <i class="fas fa-folder-plus btn-i"></i>
-                    </button>
-                </div>
-            </div>
-        </form>
-    </div>
+         </div>
+      </form>
+   </div>
 </div>
-
 {% endblock %}
