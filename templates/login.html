@@ -1,9 +1,10 @@
   {% extends "base.html" %}{% block content %}
-
+<!-- Login Page -->
   <div class="row">
       <div class="user-login col s12 m6 offset-m6">
 
           <div class="card m6 offset-m3">
+              <!-- User Login Form -->
               <form method="POST" action="{{ url_for('login_user')}}">
                   <div class="card-action green lighten 1 white-text">
                       <h3>Login Form</h3>
@@ -25,6 +26,7 @@
                       <div class="form-field">
                           <button class="btn-large green" type="submit" name="action">Login</button>
                       </div><br>
+                      <!-- Link for User registration page -->
                       <p>Haven't Registered with Us?<br><span><a href="{{ url_for('register_user')}}">Sign Up</a></span>
                       </p>
                   </div>

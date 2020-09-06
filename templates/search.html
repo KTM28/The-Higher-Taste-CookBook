@@ -1,6 +1,7 @@
 {% extends 'base.html' %} {% block content %}
-
+<!-- Search Result Page -->
 <div class="container recipe-pg-margin">
+  <!-- If the recipe is found display the result -->
   {% if find %}
   <h1>Search Result: </h1>
   {% endif %}
@@ -33,6 +34,7 @@
     {% endfor %}
     
   </div>
+  <!-- if No Recipe found display the message below -->
   {% else %}
   <h4 class="center-align">No Recipe Found</h4>
  

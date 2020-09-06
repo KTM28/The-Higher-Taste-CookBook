@@ -1,8 +1,10 @@
 {% extends 'base.html' %} {% block content %}
+
 <div class="container">
     <h3><i class="prefix material-icons">menu_book</i>Edit Recipe</h3>
 
     <div class="row">
+        <!-- Edit recipe Form -->
         <form class="col s12" action="{{ url_for('update_recipe', recipe_id=recipe._id)}}" method="POST">
             <div class="input-field col s12 m6 l3">
                 <i class="prefix fas fa-utensils"></i>
@@ -108,7 +110,7 @@
                     <label for="added_date">Date of Creation</label>
                 </div>
             </div>
-
+        <!-- Button for Cancel Edit -->
             <div class="row mobile-margin">
                 <div class="col s12">
                     <a href="{{ url_for('view_recipe', recipe_id=recipe._id) }}" class="modal-close waves-effect waves-green btn red">Cancel</a>

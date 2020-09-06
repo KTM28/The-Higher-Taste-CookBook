@@ -1,16 +1,19 @@
 {% extends "base.html" %}{% block content %}
-
+<!-- Home Page -->
 <div class="home-page">
     <div class="container">
+        <!-- the if statement below hides the slogan message if user is logged in -->
         {% if 'username' not in session %}
         <div class="row slogan">
             <div class="col s12 center-align">
                 <h3>The thousand flavors from the Nature.</h3>
+                <!-- this paragraph is hidden for small devices -->
                 <p class="white-text hide-on-small-only">A site solely dedicated to the community from around the world
                     to come together and share their best taste of Food.</p>
             </div>
         </div>
         {% endif %}
+        <!-- Search Area -->
         <div class="row container4 center-align">
             <form class="search-input col" action="{{ url_for('search_recipe') }}" method="POST">
                 <input class="validate" placeholder="Search Recipe.." type="text" id="find_recipes" name="find_recipes"

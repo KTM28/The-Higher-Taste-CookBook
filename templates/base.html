@@ -14,8 +14,9 @@
 </head>
 
 <body>
+   
     <header>
-
+        <!-- Navigation Bar -->
         <div class="navbar-fixed">
             <nav class="bg-org">
                 <div class="nav-wrapper">
@@ -55,13 +56,13 @@
 
         </div>
 
-        <!-- side Nav -->
+        <!-- Side Nav -->
         <ul class="sidenav bg-org" id="mobile-demo">
             <li><a href="{{ url_for('home_template') }}"><i class="prefix fas fa-home"></i>&nbspHome</a>
             </li>
             <li><a href="{{ url_for('get_recipes') }}"><i class="prefix fas fa-folder"></i>&nbspRecipes</a>
             </li>
-
+    <!-- the if statement below hides irrelavant links when user is logged in -->
             {% if session['logged_in'] == True %}
 
             <li><a href="{{ url_for('add_recipe')}}"><i class="prefix fas fa-plus-square"></i>&nbspAddRecipe</a>
@@ -88,6 +89,7 @@
 
     <main>
         <div>
+            <!-- Flash Message -->
             <div class="container">
 
                 <div class="col s12">
@@ -106,9 +108,10 @@
         {% endblock %}
     </main>
 
+    <!-- Footer area -->
     <footer class="bg-org">
         <div class="footer-copyright">
-
+        <!--the if statement below Dispalys username in the footer if user is logged in -->
             <div class="container center-align">
                 {% if session['logged_in'] == True %}
                 <div class="row">

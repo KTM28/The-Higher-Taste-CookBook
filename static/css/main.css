@@ -1,3 +1,4 @@
+/* main fonts used across the site */
 @import url('https://fonts.googleapis.com/css2?family=Architects+Daughter&display=swap');
 
 * {
@@ -118,6 +119,7 @@ hr {
 }
 
 
+
 /* Delete Modal */
 .delete-modal {
     width: fit-content;
@@ -133,6 +135,7 @@ hr {
     color: #DB400B;
 }
 
+
 /* Home page */
 .home-page {
     background: url('../images/292-3852x2556.jpg')no-repeat center center fixed;
@@ -146,6 +149,7 @@ hr {
     min-height: 100vh;
     top: 0;
 }
+
 
 
 /* slogan in home page */
@@ -178,6 +182,7 @@ hr {
 }
 
 
+
 /* search form  */
 .search-input input[type=text] {
     width: 300px;
@@ -198,6 +203,7 @@ div.container4 form {
     left: 50%;
     transform: translate(-50%, -50%);
 }
+
 
 /* recipe and login forms */
 
@@ -220,6 +226,7 @@ div.container4 form {
 .mobile-margin {
     margin-bottom: 80px;
 }
+
 
 /* footer  and navigation */
 
@@ -397,4 +404,4 @@ footer {
         margin-bottom: 50%;
     }
 }
-/* all recipe page */
+

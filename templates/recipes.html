@@ -1,12 +1,14 @@
 {% extends 'base.html' %} {% block content %}
 
-
+<!-- All Recipe page -->
 <div>
   <div class="row">
     <div class="col s12 center-align">
       <h3>Recipes</h3>
     </div>
   </div>
+
+  <!-- if statement to display recipe in the page if the recipe count is higher that Zero -->
   {% if recipe.count() > 0 %}
   <div class="row center-cols center-align">
     {% for recipes in recipe %}
@@ -15,6 +17,7 @@
         <div class="card-image">
           {% if recipes.recipe_img %}
           <img src="{{recipes.recipe_img}}" width="300" height="200">
+          <!-- if user have not added recipe image url then display the image below -->
           {% else %}
           <img src="{{ url_for('static', filename='images/recipePlaceHolder.jpg') }}" width="300" height="200">
           {% endif %}
@@ -38,8 +41,10 @@
     </div>
     {% endfor %}
   </div>
+  <!-- if no recipe exist the dispaly the meseage below -->
   {% else %}
   <h4 class="center-align">No Recipe Found</h4>
+  <!-- if user have not added any recipe then dispaly the add button -->
   {% if 'username' in session %}
   <div class="row recipe-pg-margin">
     <div class="col s12">
