@@ -72,7 +72,7 @@ The website is implemented with standard layout which is full responsive on mobi
 - ![#FFC837](https://placehold.it/15/FFC837/#FFC837)
 
 ### Wireframes
-The wireframes for the project can be found [Here] (The-Higher-Taste-CookBook/wireframe/The Higher Taste.png)  
+The wireframes for the project can be found [Here](The-Higher-Taste-CookBook/wireframe/The Higher Taste.png)  
 ##### back to [top](#table-of-contents)
 
 ## Features
